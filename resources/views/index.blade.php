@@ -45,11 +45,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="index">CRM si2</a>
+        <a class="navbar-brand" href="{{url('/')}}">CRM si2</a>
       </div>
       <div class="navbar-collapse collapse navbar-right">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="index">INICIO</a></li>
+          <li class="active"><a href="{{url('/')}}">INICIO</a></li>
           <li><a href="{{route('login')}}">INGRESAR</a></li>
           <li><a href="{{route('register')}}">REGISTRATE</a></li>
           
