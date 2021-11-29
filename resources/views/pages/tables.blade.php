@@ -23,14 +23,14 @@
   <meta name="author" content="Creative Tim">
   <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
   <!-- Favicon -->
-  <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="{{asset('argon/img/brand/favicon.png')}}" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
-  <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="{{asset('argon/vendor/nucleo/css/nucleo.css')}}" type="text/css">
+  <link rel="stylesheet" href="{{asset('argon/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" type="text/css">
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="{{asset('argon/css/argon.css')}}" type="text/css">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+          <img src="{{asset('argon/img/brand/blue.png')}}" class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">
@@ -186,7 +186,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="{{asset('argon/img/theme/team-1.jpg')}}" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -197,7 +197,7 @@
                             <small>2 hrs ago</small>
                           </div>
                         </div>
-                        <p class="text-sm mb-0">Let's meet at Starbucks at 11:30. Wdyt?</p>
+                        <p class="text-sm mb-0">Lets meet at Starbucks at 11:30. Wdyt?</p>
                       </div>
                     </div>
                   </a>
@@ -205,7 +205,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../assets/img/theme/team-2.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="{{asset('argon/img/theme/team-2.jpg')}}" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -224,7 +224,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../assets/img/theme/team-3.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="{{asset('argon/img/theme/team-3.jpg')}}" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -243,7 +243,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="{{asset('argon/img/theme/team-4.jpg')}}" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -254,7 +254,7 @@
                             <small>2 hrs ago</small>
                           </div>
                         </div>
-                        <p class="text-sm mb-0">Let's meet at Starbucks at 11:30. Wdyt?</p>
+                        <p class="text-sm mb-0">Lets meet at Starbucks at 11:30. Wdyt?</p>
                       </div>
                     </div>
                   </a>
@@ -262,7 +262,7 @@
                     <div class="row align-items-center">
                       <div class="col-auto">
                         <!-- Avatar -->
-                        <img alt="Image placeholder" src="../assets/img/theme/team-5.jpg" class="avatar rounded-circle">
+                        <img alt="Image placeholder" src="{{asset('argon/img/theme/team-5.jpg')}}" class="avatar rounded-circle">
                       </div>
                       <div class="col ml--2">
                         <div class="d-flex justify-content-between align-items-center">
