@@ -16,7 +16,7 @@
 .rectangulo {
 		width: 450px; 
 		height: 150px; 
-	
+		
 		background: #fbfcfd;
    }
 
@@ -217,7 +217,7 @@ a:focus {
 ################################################################# */
 
 #headerwrap {
-	background-color: #00b3fe;
+	background-color: #e2e8fe;
 	min-height: 550px;
 	padding-top: 100px;
 	padding-bottom: 0px;
@@ -225,12 +225,12 @@ a:focus {
 }
 
 #headerwrap h3, h5 {
-	color: white;
+	color: #384452;
 	font-weight: 400;
 }
 
 #headerwrap h1 {
-	color: white;
+	color: #384452;
 	margin-bottom: 25px;
 }
 

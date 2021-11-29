@@ -69,8 +69,8 @@
         <div class="col-lg-8 col-lg-offset-2">
           <h3>Administra tu negocio</h3>
           <h1>Todo en un solo lugar con CRM</h1>
-          <h5>Gestiona tus clientes, productos, empleados, correos, tareas, reuniones, documentos, etc.</h5>
-          <h5>¡Suscribete Ahora!</h5>
+          <h3>Gestiona tus clientes, productos, empleados, correos, tareas, reuniones, documentos, etc.</h3>
+          <h3>¡Suscribete Ahora!</h3>
         </div>
         <div class="col-lg-8 col-lg-offset-2 himg">
           <img src="img/pic2.jpg" width="75%" height="75%" class="img-responsive">
