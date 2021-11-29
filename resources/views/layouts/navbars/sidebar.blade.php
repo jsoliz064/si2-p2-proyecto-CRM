@@ -105,21 +105,21 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="{{ route('icons') }}">
-                        <i class="ni ni-planet text-blue"></i> {{ __('Icons') }}
+                        <i class="ni ni-planet text-blue"></i> {{ __('Icons') }} 
                     </a>
-                </li>
+                </li> 
                 <li class="nav-item ">
                     <a class="nav-link" href="{{ route('map') }}">
-                        <i class="ni ni-pin-3 text-orange"></i> {{ __('Maps') }}
+                     {{--    <i class="ni ni-pin-3 text-orange"></i> {{ __('Maps') }} --}}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('table') }}">
                       <i class="ni ni-bullet-list-67 text-default"></i>
-                      <span class="nav-link-text">Tables</span>
-                    </a>
+                       <span class="nav-link-text">Tables</span> 
+                    </a> 
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
@@ -128,29 +128,29 @@
                 </li>
                 <li class="nav-item mb-5 mr-4 ml-4 pl-1 bg-danger" style="position: absolute; bottom: 0;">
                     <a class="nav-link text-white" href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank">
-                        <i class="ni ni-cloud-download-95"></i> Upgrade to PRO
+                        {{-- <i class="ni ni-cloud-download-95"></i> Upgrade to PRO --}}
                     </a>
                 </li>
             </ul>
             <!-- Divider -->
             <hr class="my-3">
             <!-- Heading -->
-            <h6 class="navbar-heading text-muted">Documentation</h6>
+           {{--  <h6 class="navbar-heading text-muted">Documentation</h6> --}}
             <!-- Navigation -->
             <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
                     <a class="nav-link" href="https://argon-dashboard-laravel.creative-tim.com/docs/getting-started/overview.html">
-                        <i class="ni ni-spaceship"></i> Getting started
+                     {{--    <i class="ni ni-spaceship"></i> Getting started --}}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="https://argon-dashboard-laravel.creative-tim.com/docs/foundation/colors.html">
-                        <i class="ni ni-palette"></i> Foundation
+                      {{--   <i class="ni ni-palette"></i> Foundation --}}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="https://argon-dashboard-laravel.creative-tim.com/docs/components/alerts.html">
-                        <i class="ni ni-ui-04"></i> Components
+                        {{-- <i class="ni ni-ui-04"></i> Components --}}
                     </a>
                 </li>
             </ul>
