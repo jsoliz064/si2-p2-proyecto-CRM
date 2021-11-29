@@ -15,6 +15,8 @@ class CreateEmpresasTable extends Migration
     {
         Schema::create('empresas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->ondelete('cascade')->onupdate('cascade');
             $table->timestamps();
         });
     }
