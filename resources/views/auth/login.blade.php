@@ -1,15 +1,86 @@
-@extends('layouts.app', ['class' => 'bg-default'])
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Solid - Bootstrap Business Template</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
 
-@section('content')
-    @include('layouts.headers.guest')
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,900|Lato:400,900" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/prettyphoto/css/prettyphoto.css" rel="stylesheet">
+  <link href="lib/hover/hoverex-all.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+    Template Name: Solid
+    Template URL: https://templatemag.com/solid-bootstrap-business-template/
+    Author: TemplateMag.com
+    License: https://templatemag.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+  <!-- Fixed navbar -->
+    <div class="rectangulo">
+
+   
+    </div>
+  <div class="navbar navbar-default navbar-fixed-top" >
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="{{url('/')}}">PROYECTO CRM</a>
+      </div>
+      <div class="navbar-collapse collapse navbar-right">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="{{url('/')}}">INICIO</a></li>
+          <li><a href="{{route('login')}}">INGRESAR</a></li>
+          <li><a href="{{route('register')}}">REGISTRATE</a></li>
+          
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </div>
+  
+
+
+
+   
+ {{--  @extends('layouts.app', ['class' => 'bg-default'])
+
+  @section('content') --}}
+
+ 
+    
+
 
     <div class="container mt--8 pb-5">
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-header bg-transparent pb-5">
-                        <div class="text-muted text-center mt-2 mb-3"><small>{{ __('Sign in with') }}</small></div>
-                        <div class="btn-wrapper text-center">
+                        {{--  <div class="text-muted text-center mt-2 mb-3"><small>{{ __('Sign in ') }}</small></div>
+                                <div class="btn-wrapper text-center">
                             <a href="#" class="btn btn-neutral btn-icon">
                                 <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/github.svg"></span>
                                 <span class="btn-inner--text">{{ __('Github') }}</span>
@@ -18,15 +89,17 @@
                                 <span class="btn-inner--icon"><img src="{{ asset('argon') }}/img/icons/common/google.svg"></span>
                                 <span class="btn-inner--text">{{ __('Google') }}</span>
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
-                            <small>
-                                    Create new account OR Sign in with these credentials:
+                           
+                                  ¡Bienvenido!
                                     <br>
-                                    Username <strong>admin@argon.com</strong> Password: <strong>secret</strong>
-                            </small>
+                                    Correo <strong>admin@gmail.com</strong> 
+                                    <br>
+                                    Contraseña: <strong>********</strong>
+                            
                         </div>
                         <form role="form" method="POST" action="{{ route('login') }}">
                             @csrf
@@ -86,4 +159,5 @@
             </div>
         </div>
     </div>
-@endsection
+
+</body>

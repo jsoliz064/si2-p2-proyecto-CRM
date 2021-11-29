@@ -45,7 +45,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-        <a class="navbar-brand" href="{{url('/')}}">CRM si2</a>
+        <a class="navbar-brand" href="{{url('/')}}">PROYECTO CRM</a>
       </div>
       <div class="navbar-collapse collapse navbar-right">
         <ul class="nav navbar-nav">
@@ -62,23 +62,25 @@
   <!-- *****************************************************************************************************************
 	 HEADERWRAP
 	 ***************************************************************************************************************** -->
-  <div id="headerwrap">
-    <div class="container">
+ 
+   <div id="headerwrap" >
+    <div class="container" >
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
           <h3>Administra tu negocio</h3>
           <h1>Todo en un solo lugar con CRM</h1>
-          <h5>Gestiona tus clientes, productos, empleados, correos, tareas, reuniones, etc.</hh5>
+          <h5>Gestiona tus clientes, productos, empleados, correos, tareas, reuniones, documentos, etc.</h5>
           <h5>¡Suscribete Ahora!</h5>
         </div>
         <div class="col-lg-8 col-lg-offset-2 himg">
-          <img src="img/browser.png" width="35%" height="35%"class="img-responsive">
+          <img src="img/pic2.jpg" width="75%" height="75%" class="img-responsive">
         </div>
       </div>
       <!-- /row -->
     </div>
     <!-- /container -->
   </div>
+
   <!-- /headerwrap -->
 
   
@@ -117,7 +119,7 @@
   <div id="copyrights">
     <div class="container">
       <p>
-        &copy; Copyrights <strong>SI2</strong>. Todos los derechos reservados
+        &copy; Copyrights <strong>Grupo 4</strong>. Todos los derechos reservados
       </p>
     </div>
   </div>
