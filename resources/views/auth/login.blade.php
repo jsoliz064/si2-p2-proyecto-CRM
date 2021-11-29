@@ -35,10 +35,7 @@
 
 <body>
   <!-- Fixed navbar -->
-    <div class="rectangulo">
-
    
-    </div>
   <div class="navbar navbar-default navbar-fixed-top" >
     <div class="container">
       <div class="navbar-header">
@@ -74,9 +71,9 @@
     
 
 
-    <div class="container mt--8 pb-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-7">
+    <div class="headerwrap2">
+        <div class="container">
+            <div class="col-lg-8 col-lg-offset-2">
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-header bg-transparent pb-5">
                         {{--  <div class="text-muted text-center mt-2 mb-3"><small>{{ __('Sign in ') }}</small></div>
@@ -101,11 +98,11 @@
                                     Contraseña: <strong>********</strong>
                             
                         </div>
-                        <form role="form" method="POST" action="{{ route('login') }}">
+                        <form class="col-lg-8 col-lg-offset-2" role="form" method="POST" action="{{ route('login') }}">
                             @csrf
 
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
-                                <div class="input-group input-group-alternative">
+                                <div class="col-lg-8 col-lg-offset-2">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                     </div>
@@ -118,7 +115,7 @@
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                                <div class="input-group input-group-alternative">
+                                <div class="col-lg-8 col-lg-offset-2">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                     </div>
@@ -130,19 +127,19 @@
                                     </span>
                                 @endif
                             </div>
-                            <div class="custom-control custom-control-alternative custom-checkbox">
+                            <div class="col-lg-8 col-lg-offset-2">
                                 <input class="custom-control-input" name="remember" id="customCheckLogin" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
                                 <label class="custom-control-label" for="customCheckLogin">
                                     <span class="text-muted">{{ __('Remember me') }}</span>
                                 </label>
                             </div>
-                            <div class="text-center">
+                            <div class="col-lg-8 col-lg-offset-2">
                                 <button type="submit" class="btn btn-primary my-4">{{ __('Sign in') }}</button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="row mt-3">
+                <div class="col-lg-8 col-lg-offset-2">
                     <div class="col-6">
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}" class="text-light">
@@ -150,7 +147,7 @@
                             </a>
                         @endif
                     </div>
-                    <div class="col-6 text-right">
+                    <div class="col-lg-8 col-lg-offset-2">
                         <a href="{{ route('register') }}" class="text-light">
                             <small>{{ __('Create new account') }}</small>
                         </a>
@@ -161,3 +158,55 @@
     </div>
 
 </body>
+
+<!--footer-->
+<div id="footerwrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <h4>Acerca de</h4>
+          <div class="hline-w"></div>
+          <p>Estudiantes de 7mo semestre de Ingenieria en Sistemas. Facultad de Computacion FICCT</p>
+        </div>
+        <div class="col-lg-4">
+          <h4>Redes Sociales</h4>
+          <div class="hline-w"></div>
+          <p>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+          </p>
+        </div>
+        <div class="col-lg-4">
+          <h4>Ubicación</h4>
+          <div class="hline-w"></div>
+          <p>
+            UAGRM
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="copyrights">
+    <div class="container">
+      <p>
+        &copy; Copyrights <strong>Grupo 4</strong>. Todos los derechos reservados
+      </p>
+    </div>
+  </div>
+  <!-- / copyrights -->
+
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/php-mail-form/validate.js"></script>
+  <script src="lib/prettyphoto/js/prettyphoto.js"></script>
+  <script src="lib/isotope/isotope.min.js"></script>
+  <script src="lib/hover/hoverdir.js"></script>
+  <script src="lib/hover/hoverex.min.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="js/main.js"></script>
+
+</html>

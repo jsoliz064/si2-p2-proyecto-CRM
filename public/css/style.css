@@ -21,7 +21,7 @@
    }
 
 body {
-	background: #ffffff;
+	background: #e2e8fe;
 	margin: 0;
 	height: 100%;
 	color: #384452;
@@ -215,6 +215,14 @@ a:focus {
 /*	################################################################
 	SITE WRAPS
 ################################################################# */
+.headerwrap2 {
+	background-color: #e2e8fe;
+	min-height: 550px;
+	padding-top: 200px;
+	padding-bottom: 0px;
+	text-align: center;
+}
+
 
 #headerwrap {
 	background-color: #e2e8fe;
