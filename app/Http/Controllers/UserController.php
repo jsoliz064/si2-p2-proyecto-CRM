@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
-
+use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
     /**
@@ -137,6 +137,29 @@ class UserController extends Controller
 
         $user->save();
         return redirect()->route('user.show');
+    }
+    public function changeProfile(Request $request)
+    {
+        $user=User::find(auth()->user()->id);
+        date_default_timezone_set("America/La_Paz");
+        if ($request->url!==null){
+            //valida que cumpla las condiciones sgtes
+            $request->validate([
+                'url'=>'required|image|max:10000'
+            ]);
+            $ruta = "public".$user->url;
+            if ($user->url<>"argon/img/theme/Sin-perfil.jpg"){
+                if (file_exists("../".$ruta)){
+                    unlink("../".$ruta);
+                }
+            }
+           
+            $imagenes=$request->file('url')->store('public/personas');
+            $url=Storage::url($imagenes);
+            $user->url=$url;
+            $user->save(); //guardar cambios de usuario 
+        }          
+        return redirect()->route('profile.edit');
     }
 
     /**

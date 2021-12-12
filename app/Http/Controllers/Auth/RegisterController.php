@@ -69,10 +69,11 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'url'=>"argon/img/theme/Sin-perfil.jpg"
         ])->assignRole('Empresa');
         $empresa=Empresa::create([
             'id_user' => $user->id,
         ]);
         return $user;
     }
-}
+} 

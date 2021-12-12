@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@include('layouts.headers.guest')
-
 
 <div class="container-fluid mt--7">
     <div class="row">

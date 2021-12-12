@@ -26,10 +26,13 @@
                 @csrf
             </form>
             @include('layouts.navbars.sidebar')
+            
         @endauth
         
         <div class="main-content">
+
             @include('layouts.navbars.navbar')
+            @include('layouts.headers.guest')
             @yield('content')
         </div>
 

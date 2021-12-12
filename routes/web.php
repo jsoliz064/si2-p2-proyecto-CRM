@@ -36,4 +36,5 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::resource('users',UserController::class)->names('admin.users');
+Route::patch('user-profile',[UserController::class,'changeProfile'])->name('user.change.perfil');
 
