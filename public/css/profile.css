@@ -1,0 +1,8 @@
+.change{
+    padding: 6rem 0 0 0;
+}
+@media (max-height: 840px) and (max-width: 767px){
+    .change{
+        padding: 2rem 0 0 0;
+    }
+}

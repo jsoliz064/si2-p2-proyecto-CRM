@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empleado;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
@@ -14,7 +16,8 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        //
+        $empleados=Empleado::where('id_empresa',auth()->user()->id)->get();
+        return view('empleados.index',compact('empleados'));
     }
 
     /**
@@ -24,7 +27,8 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        //
+        return view('empleados.create');
+        
     }
 
     /**
@@ -35,7 +39,20 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        date_default_timezone_set("America/La_Paz");
+        $id_user=User::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'password' => Hash::make(request('password')),
+        ])->assignRole('Empleado');
+
+        $empleados=Empleado::create([
+            'ci'=>request('ci'),
+            'telefono'=>request('telefono'),
+            'id_empresa' => auth()->user()->id,
+            'id_user'=>$id_user,
+        ]);
+        return redirect()->route('empleados.index');
     }
 
     /**
@@ -46,7 +63,9 @@ class EmpleadoController extends Controller
      */
     public function show(Empleado $empleado)
     {
-        //
+        $user=User::find($empleado->id_user);
+        return view('empleados.show',compact ('empleado',compact('user')));
+        
     }
 
     /**
@@ -57,7 +76,8 @@ class EmpleadoController extends Controller
      */
     public function edit(Empleado $empleado)
     {
-        //
+        $user=User::find($empleado->id_user);
+        return view('empleados.edit',compact ('empleado',compact('user')));
     }
 
     /**
@@ -69,7 +89,20 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, Empleado $empleado)
     {
-        //
+        $user=User::find($empleado->id_user);
+
+        date_default_timezone_set("America/La_Paz");
+        $empleado->ci=$request->ci;
+        $user->nombre=$request->nombre;
+        $empleado->telefono=$request->telefono;
+        $empleado->sexo=$request->sexo;
+
+        $user->email=$request->email;
+        $user->password=Hash::make($request->password);
+        $empleado->save();
+        $user->save();
+
+        return redirect()->route('empleados.index');
     }
 
     /**
@@ -80,6 +113,8 @@ class EmpleadoController extends Controller
      */
     public function destroy(Empleado $empleado)
     {
-        //
+        $user=User::find($empleado->id_user);
+        $user->delete();
+        return redirect()->route('empleados.index');
     }
 }

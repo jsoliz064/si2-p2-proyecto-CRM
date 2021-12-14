@@ -51,7 +51,7 @@
                 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.users.index') }}">
-                        <i class="fas fa-users"></i> {{ __('Administrar Usuarios') }}
+                        <i class="fas fa-users text-red"></i> {{ __('Administrar Usuarios') }}
                     </a>
                 </li>
 
@@ -81,15 +81,20 @@
     
                
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="{{ route('table') }}">
                       <i class="ni ni-bullet-list-67 text-default"></i>
                        <span class="nav-link-text">Tables</span> 
                     </a> 
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <i class="ni ni-circle-08 text-pink"></i> {{ __('Registrar Empleado') }}
+                        <i class="ni ni-circle-08 text-blue"></i> {{ __('Registrar Empleado') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('clientes.index')}}">
+                        <i class="fas fa-user text-blue"></i> {{ __('Registrar Cliente') }}
                     </a>
                 </li>
                 
@@ -97,7 +102,7 @@
             <!-- Divider -->
             <hr class="my-3">
             <!-- Heading -->
-           <h6 class="navbar-heading text-muted">Documentation</h6>
+           {{-- <h6 class="navbar-heading text-muted">Documentation</h6>
             <!-- Navigation -->
             <ul class="navbar-nav mb-md-3">
                 <li class="nav-item">
@@ -115,7 +120,7 @@
                         <i class="ni ni-ui-04"></i> Components
                     </a>
                 </li>
-            </ul>
+            </ul> --}}
         </div>
     </div>
 </nav>

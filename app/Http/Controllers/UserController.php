@@ -154,7 +154,7 @@ class UserController extends Controller
                 }
             }
            
-            $imagenes=$request->file('url')->store('public/personas');
+            $imagenes=$request->file('url')->store('public/empresas');
             $url=Storage::url($imagenes);
             $user->url=$url;
             $user->save(); //guardar cambios de usuario 
@@ -170,8 +170,12 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        /* $nombreRol = DB::table('roles')->where('id', '=', $user->idRol)->value('name');
-        $user->removeRole($nombreRol); */
+        $ruta = "public".$user->url;
+        if ($user->url<>"argon/img/theme/Sin-perfil.jpg"){
+            if (file_exists("../".$ruta)){
+                unlink("../".$ruta);
+            }
+        }
         $user->delete();
         
         return redirect()->route('admin.users.index');
