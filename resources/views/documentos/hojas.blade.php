@@ -9,8 +9,9 @@
     <div class="card">
         <div class="card-body">
           <div align="center">
-            <form method="post" action="{{route('documentos.store')}}"  novalidate >
+            <form method="post" action="{{route('documentos.update',$documento)}}"  novalidate >
                 @csrf
+                @method('PATCH')
                 <h4><B>DIRECTORIO</B></h4>
     
                 <div class="cbp-mc-daniel">
@@ -22,6 +23,16 @@
                 
                 <button  class="btn btn-danger btn-sm" type="submit">Actualizar Nombre</button>
             </form>
+            <br>
+            <form action="{{route('documentos-hojas.store2',$documento)}}" method="POST" enctype="multipart/form-data" >
+              @csrf
+              
+              <input type="file" name="url" id="url" accept="image/*" class="form-control" >
+              @error('url')
+                  <small class="text-danger">{{$message}}</small>
+              @enderror
+              <button type="submit" class="btn btn-success mt-4">Agregar Archivo</button>
+          </form>
           </div>
         </div>
       </div>
@@ -34,6 +45,9 @@
                         <div class="col-md-8">
                           <h3 class="mb-0"><b>LISTA DE ARCHIVOS</b></h3>
                         </div>
+                        <div align="right" class="col-md-4">
+                          
+                      </div>
                         
                     </div>
                 </div>
@@ -76,9 +90,9 @@
                 </div>
             </div>
         </div>
-    </div>
-        
+    </div> 
 </div>
+<br>
 @endsection
 
 @push('js')

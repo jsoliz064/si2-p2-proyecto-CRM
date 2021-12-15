@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HojaDocumento;
 use App\Models\Documento;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
 
@@ -18,11 +19,10 @@ class HojaDocumentoController extends Controller
     {
         //
     }
-    public function index2($documento)
+    public function index2(Documento $documento)
     {
-        dd($documento);
-        //$hojadocumentos=HojaDocumento::where('id_documento',$documento->id)->get();
-        //return view('documentos.hojas',compact('hojadocumentos','documento'));
+        $hojadocumentos=HojaDocumento::where('id_documento',$documento->id)->get();
+        return view('documentos.hojas',compact('hojadocumentos','documento'));
     }
 
     /**
@@ -41,9 +41,21 @@ class HojaDocumentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store2(Request $request,Documento $documento)
     {
-        //
+        date_default_timezone_set("America/La_Paz");
+        $request->validate([
+            'url'=>'required|image|max:10000'
+        ]);
+        //guardar archivo en storage
+        $imagenes=$request->file('url')->store('public/documentos');
+        $url=Storage::url($imagenes);
+
+        $hojadocumentos=HojaDocumento::create([
+            'url' => $url,
+            'id_documento' => $documento->id,
+        ]);
+        return redirect()->route('documentos-hojas.index2',$documento);
     }
 
     /**
@@ -88,6 +100,12 @@ class HojaDocumentoController extends Controller
      */
     public function destroy(HojaDocumento $hojaDocumento)
     {
-        //
+        $ruta = "public".$hojaDocumento->url;
+        if (file_exists("../".$ruta)){
+            
+            unlink("../".$ruta);
+        }
+        $hojaDocumento->delete();
+        return redirect()->route('documentos.index');
     }
 }

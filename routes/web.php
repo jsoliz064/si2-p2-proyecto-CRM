@@ -49,6 +49,7 @@ Route::resource('empleados',EmpleadoController::class);
 Route::resource('productos',ProductoController::class);
 Route::resource('documentos',DocumentoController::class);
 Route::resource('documentos-hojas',HojaDocumentoController::class);
-Route::get('documentos-hojas-edit',[HojaDocumentoController::class,'index2'])->name('documentos-hojas.index2');
+Route::get('documentos-hojas-edit,{documento}',[HojaDocumentoController::class,'index2'])->name('documentos-hojas.index2');
+Route::post('documentos-hojas-store,{documento}',[HojaDocumentoController::class,'store2'])->name('documentos-hojas.store2');
 
 

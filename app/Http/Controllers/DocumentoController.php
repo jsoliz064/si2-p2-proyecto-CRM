@@ -63,7 +63,7 @@ class DocumentoController extends Controller
     public function edit(Documento $documento)
     {
         
-        return redirect()->route('documentos-hojas.index2',$documento->id);
+        return redirect()->route('documentos-hojas.index2',$documento);
     }
 
     /**
@@ -75,7 +75,10 @@ class DocumentoController extends Controller
      */
     public function update(Request $request, Documento $documento)
     {
-        //
+        date_default_timezone_set("America/La_Paz");
+        $documento->nombre=$request->nombre;
+        $documento->save();
+        return redirect()->route('documentos.index');
     }
 
     /**
