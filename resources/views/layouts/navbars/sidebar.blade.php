@@ -89,12 +89,17 @@
                 </li> --}}
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <i class="ni ni-circle-08 text-blue"></i> {{ __('Registrar Empleado') }}
+                        <i class="fas fa-user-tie text-blue"></i> {{ __('Registrar Empleado') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('clientes.index')}}">
-                        <i class="fas fa-user text-blue"></i> {{ __('Registrar Cliente') }}
+                        <i class="fas fa-address-book text-blue"></i> {{ __('Registrar Cliente') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('productos.index')}}">
+                        <i class="fas fa-store text-blue"></i> {{ __('Registrar Producto') }}
                     </a>
                 </li>
                 

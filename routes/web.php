@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\ProductoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,4 +44,6 @@ Route::patch('user-profile',[UserController::class,'changeProfile'])->name('user
 
 Route::resource('clientes',ClienteController::class);
 Route::resource('empleados',EmpleadoController::class);
+Route::resource('productos',ProductoController::class);
+
 
