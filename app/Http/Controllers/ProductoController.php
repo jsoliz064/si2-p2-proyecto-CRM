@@ -26,7 +26,6 @@ class ProductoController extends Controller
     public function create()
     {
         return view('productos.create');
-        
     }
 
     /**
@@ -43,6 +42,8 @@ class ProductoController extends Controller
             'precio_mayor'=>request('precio_mayor'),
             'precio_unidad'=>request('precio_unidad'),
             'id_empresa' => auth()->user()->id,
+            'stock'=>request('stock'),
+            
         ]);
         return redirect()->route('productos.index');
     }
@@ -83,6 +84,7 @@ class ProductoController extends Controller
         $producto->nombre=$request->nombre;
         $producto->precio_mayor=$request->precio_mayor;
         $producto->precio_unidad=$request->precio_unidad;
+        $producto->stock=$request->stock;
         $producto->save();
         return redirect()->route('productos.index');
     }

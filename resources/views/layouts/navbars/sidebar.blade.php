@@ -102,6 +102,11 @@
                         <i class="fas fa-store text-blue"></i> {{ __('Registrar Producto') }}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('documentos.index')}}">
+                        <i class="fas fa-folder-plus text-blue"></i> {{ __('Registrar Documentos') }}
+                    </a>
+                </li>
                 
             </ul>
             <!-- Divider -->

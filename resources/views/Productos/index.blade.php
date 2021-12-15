@@ -25,6 +25,7 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Precio/Mayor</th>
                                 <th scope="col">Precio/Unidad</th>
+                                <th scope="col">Stock</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -36,6 +37,7 @@
                               <td>{{$producto->nombre}}</td>
                               <td>{{$producto->precio_mayor}}</td>
                               <td>{{$producto->precio_unidad}}</td>
+                              <td>{{$producto->stock}}</td>
                               <td class="text-right">
                                   <div class="dropdown">
                                       <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

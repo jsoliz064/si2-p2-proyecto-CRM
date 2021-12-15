@@ -32,6 +32,14 @@
                     <p>DEBE INGRESAR BIEN EL DATO</p>
                 @enderror
 
+                <h5>Cantidad:</h5>
+                <input type="number" name="stock"  class="focus border-primary  form-control" >
+
+
+                @error('stock')
+                    <p>DEBE INGRESAR BIEN EL DATO</p>
+                @enderror
+
                 
                 <br>
                 <div align="center">

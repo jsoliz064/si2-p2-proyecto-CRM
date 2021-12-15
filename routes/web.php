@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\HojaDocumentoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,5 +47,8 @@ Route::patch('user-profile',[UserController::class,'changeProfile'])->name('user
 Route::resource('clientes',ClienteController::class);
 Route::resource('empleados',EmpleadoController::class);
 Route::resource('productos',ProductoController::class);
+Route::resource('documentos',DocumentoController::class);
+Route::resource('documentos-hojas',HojaDocumentoController::class);
+Route::get('documentos-hojas-edit',[HojaDocumentoController::class,'index2'])->name('documentos-hojas.index2');
 
 
