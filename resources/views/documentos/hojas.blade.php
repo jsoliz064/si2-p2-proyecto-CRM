@@ -63,17 +63,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($hojadocumentos as $hojadocumento)
+                            @foreach ($hojaDocumentos as $hojaDocumento)
                             {{-- @php  $usuario = App\Models\User::find($user->id);  @endphp --}}
                             <tr>
-                              <td>{{$hojadocumento->id}}</td>
-                              <td>{{$hojadocumento->url}}</td>
-                              <td>{{$hojadocumento->created_at}}</td>
+                              <td>{{$hojaDocumento->id}}</td>
+                              <td>{{$hojaDocumento->url}}</td>
+                              <td>{{$hojaDocumento->created_at}}</td>
                               <td class="text-right">
-                                <form  action="{{route('documentos-hojas.destroy',$hojadocumento)}}" method="post">
+                                <form  action="{{route('documentos-hojas.destroy',$hojaDocumento)}}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <a class="btn btn-primary btn-sm" href="{{route('documentos-hojas.show',$hojadocumento)}}">Ver archivo</a>
+                                    <a class="btn btn-primary btn-sm" href="{{route('documentos-hojas.show',$hojaDocumento)}}">Ver archivo</a>
                                     <button class="btn btn-sm boton"  onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" 
                                     value="Borrar"><i class="fas fa-trash-alt text-red"></i></button>
                                 </form>

@@ -21,8 +21,8 @@ class HojaDocumentoController extends Controller
     }
     public function index2(Documento $documento)
     {
-        $hojadocumentos=HojaDocumento::where('id_documento',$documento->id)->get();
-        return view('documentos.hojas',compact('hojadocumentos','documento'));
+        $hojaDocumentos=HojaDocumento::where('id_documento',$documento->id)->get();
+        return view('documentos.hojas',compact('hojaDocumentos','documento'));
     }
 
     /**
@@ -66,7 +66,7 @@ class HojaDocumentoController extends Controller
      */
     public function show(HojaDocumento $hojaDocumento)
     {
-        //
+        return view('documentos.show',compact('hojaDocumento'));
     }
 
     /**
@@ -100,7 +100,9 @@ class HojaDocumentoController extends Controller
      */
     public function destroy(HojaDocumento $hojaDocumento)
     {
+        dd($hojaDocumento);
         $ruta = "public".$hojaDocumento->url;
+        
         if (file_exists("../".$ruta)){
             
             unlink("../".$ruta);
