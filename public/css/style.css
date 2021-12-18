@@ -13,11 +13,11 @@
 		margin: 0;
 		padding: 0px;
 	}
-.rectangulo {
-		width: 450px; 
-		height: 150px; 
+	.rectangulo {
+		width: 250px; 
+		height: 35px; 
 		
-		background: #fbfcfd;
+		background: #e2e8fe;
    }
 
 body {
@@ -222,7 +222,20 @@ a:focus {
 	padding-bottom: 0px;
 	text-align: center;
 }
-
+.headerwrapL {
+	background-color: #e2e8fe;
+	min-height: 550px;
+	padding-top: 200px;
+	padding-bottom: 0px;
+	text-align: left;
+}
+.headerwrapR {
+	background-color: #e2e8fe;
+	min-height: 550px;
+	padding-top: 200px;
+	padding-bottom: 0px;
+	text-align: right;
+}
 
 #headerwrap {
 	background-color: #e2e8fe;
