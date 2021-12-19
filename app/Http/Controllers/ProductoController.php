@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
@@ -12,12 +12,23 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $tenanName=null;
+
+    public function __construct(){
+        
+
+        
+    }
+ 
+
     public function index()
     {
-        $productos=Producto::where('id_empresa',auth()->user()->id)->get();
+        
+        $productos = DB::connection('tenant')->table('productos')->get();
+        //$productos=Producto::where('id_empresa',auth()->user()->id)->get();
         return view('productos.index',compact('productos'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *

@@ -14,7 +14,7 @@ class DocumentoController extends Controller
      */
     public function index()
     {
-        $documentos=Documento::where('id_empresa',auth()->user()->id)->get();
+        $documentos=Documento::All();
         return view('documentos.index',compact('documentos'));
     }
 
@@ -39,7 +39,6 @@ class DocumentoController extends Controller
         date_default_timezone_set("America/La_Paz");
         $documentos=Documento::create([
             'nombre'=>request('nombre'),
-            'id_empresa' => auth()->user()->id,
         ]);
         return redirect()->route('documentos.index');
     }

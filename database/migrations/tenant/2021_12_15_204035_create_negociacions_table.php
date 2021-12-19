@@ -15,7 +15,6 @@ class CreateNegociacionsTable extends Migration
     {
         Schema::create('negociacions', function (Blueprint $table) {
             $table->id();
-            $table->id();
             $table->string('nombre');
             $table->float('monto')->nullable();
             $table->float('moneda')->nullable();

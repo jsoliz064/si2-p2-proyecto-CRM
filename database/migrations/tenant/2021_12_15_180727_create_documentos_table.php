@@ -16,8 +16,8 @@ class CreateDocumentosTable extends Migration
         Schema::create('documentos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->unsignedBigInteger('id_empresa');
-            $table->foreign('id_empresa')->references('id')->on('users')->ondelete('cascade')->onupdate('cascade');
+            //$table->unsignedBigInteger('id_empresa');
+            //$table->foreign('id_empresa')->references('id')->on('users')->ondelete('cascade')->onupdate('cascade');
             $table->timestamps();
         });
     }

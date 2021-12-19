@@ -72,7 +72,7 @@ return [
          *
          * This should be enabled for MySQL, but not for MariaDB and PostgreSQL.
          */
-        'uuid-limit-length-to-32' => env('LIMIT_UUID_LENGTH_32', false),
+        'uuid-limit-length-to-32' => env('LIMIT_UUID_LENGTH_32', true),
 
         /**
          * Specify the disk you configured in the filesystems.php file where to store
@@ -115,7 +115,7 @@ return [
         /**
          * Time to cache websites in seconds. Set to false to disable.
          */
-        'cache' => 600,
+        'cache' => 10,
     ],
     'hostname' => [
         /**
@@ -296,7 +296,7 @@ return [
          * @info Useful for overriding the connection of third party packages.
          */
         'force-tenant-connection-of-models' => [
-//            App\User::class
+            //App\Models\Producto::class
         ],
         'force-system-connection-of-models' => [
 //            App\User::class
