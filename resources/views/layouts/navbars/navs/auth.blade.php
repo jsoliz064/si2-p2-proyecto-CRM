@@ -1,7 +1,16 @@
 <!-- Top navbar -->
+<head>
+    <link href="{{asset('css/tema.css') }}" rel="stylesheet">
+    <script src="{{asset('js/tema.js') }}"></script>
+
+</head>
 <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
     <div class="container-fluid">
         <!-- Brand -->
+        
+        <div class="home_social">
+            <i class="uil uil-moon home_social-icon" id="theme-button"></i>
+        </div>
         {{--  <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="{{ route('home') }}">{{ __('Dashboard') }}</a>  --}}
         <!-- Form -->
         <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
