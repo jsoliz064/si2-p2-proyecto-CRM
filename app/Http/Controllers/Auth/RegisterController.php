@@ -98,7 +98,7 @@ class RegisterController extends Controller
         ]);
         return $user;
     }
-
+ 
     protected function registered(Request $request, $user)
     {
         /* $fqdn=sprintf('%s.%s', request('fqdn'),env('APP_DOMAIN'));
@@ -114,7 +114,7 @@ class RegisterController extends Controller
         $usuario->db=$website->uuid;
         $usuario->save(); */
 
-        $fqdn=request('fqdn');
+        $fqdn=sprintf('%s.%s', request('fqdn'),"proyectocrm.test");
         $website = new Website;
         $website->uuid=Str::random(10);
         

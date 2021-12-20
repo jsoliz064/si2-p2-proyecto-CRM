@@ -19,8 +19,8 @@ class CreateProductosTable extends Migration
             $table->float('precio_mayor')->nullable();
             $table->float('precio_unidad')->nullable();
             $table->integer('stock')->nullable();
-            $table->unsignedBigInteger('id_empresa');
-            $table->foreign('id_empresa')->references('id')->on('users')->ondelete('cascade')->onupdate('cascade');
+            //$table->unsignedBigInteger('id_empresa');
+            //$table->foreign('id_empresa')->references('id')->on('users')->ondelete('cascade')->onupdate('cascade');
             $table->timestamps();
         });
     }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Documento;
+use App\Models\Bitacora;
+
 use Illuminate\Http\Request;
 
 class DocumentoController extends Controller
@@ -40,6 +42,12 @@ class DocumentoController extends Controller
         $documentos=Documento::create([
             'nombre'=>request('nombre'),
         ]);
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"crear",
+            'implicado'=>"documento",
+            'id_implicado'=>$documentos->id,
+        ]);
         return redirect()->route('documentos.index');
     }
 
@@ -61,7 +69,7 @@ class DocumentoController extends Controller
      */
     public function edit(Documento $documento)
     {
-        
+       
         return redirect()->route('documentos-hojas.index2',$documento);
     }
 
@@ -77,6 +85,13 @@ class DocumentoController extends Controller
         date_default_timezone_set("America/La_Paz");
         $documento->nombre=$request->nombre;
         $documento->save();
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"editar",
+            'implicado'=>"documento",
+            'id_implicado'=>$documento->id,
+        ]);
         return redirect()->route('documentos.index');
     }
 
@@ -89,6 +104,13 @@ class DocumentoController extends Controller
     public function destroy(Documento $documento)
     {
         $documento->delete();
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"eliminar",
+            'implicado'=>"documento",
+            'id_implicado'=>$documento->id,
+        ]);
         return redirect()->route('documentos.index');
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Producto;
+use App\Models\Bitacora;
+
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -24,8 +26,7 @@ class ProductoController extends Controller
     public function index()
     {
         
-        $productos = DB::connection('tenant')->table('productos')->get();
-        //$productos=Producto::where('id_empresa',auth()->user()->id)->get();
+        $productos=Producto::all();
         return view('productos.index',compact('productos'));
     }
     
@@ -52,9 +53,15 @@ class ProductoController extends Controller
             'nombre'=>request('nombre'),
             'precio_mayor'=>request('precio_mayor'),
             'precio_unidad'=>request('precio_unidad'),
-            'id_empresa' => auth()->user()->id,
             'stock'=>request('stock'),
             
+        ]);
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"crear",
+            'implicado'=>"producto",
+            'id_implicado'=>$productos->id,
         ]);
         return redirect()->route('productos.index');
     }
@@ -97,6 +104,13 @@ class ProductoController extends Controller
         $producto->precio_unidad=$request->precio_unidad;
         $producto->stock=$request->stock;
         $producto->save();
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"editar",
+            'implicado'=>"producto",
+            'id_implicado'=>$producto->id,
+        ]);
         return redirect()->route('productos.index');
     }
 
@@ -109,6 +123,14 @@ class ProductoController extends Controller
     public function destroy(Producto $producto)
     {
         $producto->delete();
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"eliminar",
+            'implicado'=>"producto",
+            'id_implicado'=>$producto->id,
+        ]);
+
         return redirect()->route('productos.index');
     }
 }

@@ -14,11 +14,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        /* $user1 = User::create([
+        $user1 = User::create([
             'name'=> 'Administrador',
             'email'=> 'admin@gmail.com',
             'password' => bcrypt('12345678'),
             'url'=>"argon/img/theme/Sin-perfil.jpg"
-        ])->assignRole('Admin'); */
+        ])->assignRole('Admin');
     }
 }
