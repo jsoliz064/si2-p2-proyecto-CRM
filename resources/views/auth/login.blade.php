@@ -70,12 +70,12 @@
  
     
 
-<br>
-    <div class="headerwrap2">
-        <div class="container">
-            <div class="col-lg-8 col-lg-offset-2">
-                <div class="card bg-secondary shadow border-0">
-                    <div class="card-header bg-transparent pb-5">
+
+      <div class="headerwrap2">
+          <div class="container">
+              <div class="col-lg-8 col-lg-offset-2">
+                  <div class="card bg-secondary shadow border-0">
+                      <div class="card-header bg-transparent pb-5">
                         {{--  <div class="text-muted text-center mt-2 mb-3"><small>{{ __('Sign in ') }}</small></div>
                                 <div class="btn-wrapper text-center">
                             <a href="#" class="btn btn-neutral btn-icon">
@@ -114,6 +114,8 @@
                                     </span>
                                 @endif
                             </div>
+                            <div class="rectangulo">       </div>
+
                             <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                 <div class="col-lg-8 col-lg-offset-2">
                                     <div class="input-group-prepend">
@@ -127,12 +129,14 @@
                                     </span>
                                 @endif
                             </div>
+                            <div class="rectangulo">       </div>
                             <div class="col-lg-8 col-lg-offset-2">
                                 <input class="custom-control-input" name="remember" id="customCheckLogin" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
                                 <label class="custom-control-label" for="customCheckLogin">
                                     <span class="text-muted">{{ __('Remember me') }}</span>
                                 </label>
                             </div>
+                            <div class="rectangulo">       </div>
                             <div class="col-lg-8 col-lg-offset-2">
                                 <button type="submit" class="btn btn-primary my-4">{{ __('Sign in') }}</button>
                             </div>
@@ -155,9 +159,10 @@
                 </div>
             </div>
         </div>
+
     </div>
 
-</body>
+
 
 <!--footer-->
 <div id="footerwrap">
@@ -209,4 +214,5 @@
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
 
+</body>
 </html>

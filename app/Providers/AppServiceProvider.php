@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /* $env = app(\Hyn\Tenancy\Environment::class);
+
+        if ($fqdn = optional($env->hostname())->fqdn) {
+            config(['database.default' => 'tenant']);
+        } */
     }
 }

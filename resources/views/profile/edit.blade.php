@@ -1,6 +1,10 @@
 @extends('layouts.app', ['title' => __('User Profile')])
 
 @section('content')
+<head>
+    <link rel="stylesheet" href="{{asset('css/profile.css')}}">
+
+</head>
     @include('users.partials.header', [
         'title' => __('Hola') . ' '. auth()->user()->name,
         'description' => __('This is your profile page. You can see the progress you\'ve made with your work and manage your projects or assigned tasks'),
@@ -27,18 +31,18 @@
                         </div>
                     </div>
                     <div class="card-body pt-0 pt-md-4">
-                        <div align="center">
-                            <form action="{{route('user.change.perfil')}}" method="POST" enctype="multipart/form-data" >
-                                @csrf
-                                @method('PATCH')
-                                <input type="file" name="url" id="url" accept="image/*" class="form-control" >
-
-                                <br> 
-                                @error('url')
-                                    <small class="text-danger">{{$message}}</small>
-                                @enderror
-                                <button type="submit" class="btn btn-success mt-4">Guardar</button>
-                            </form>
+                        <div align="center" class="change">
+                            
+                                <form action="{{route('user.change.perfil')}}" method="POST" enctype="multipart/form-data" >
+                                    @csrf
+                                    @method('PATCH')
+                                    
+                                    <input type="file" name="url" id="url" accept="image/*" class="form-control" >
+                                    @error('url')
+                                        <small class="text-danger">{{$message}}</small>
+                                    @enderror
+                                    <button type="submit" class="btn btn-success mt-4">Guardar</button>
+                                </form>
                         </div>
                         <br>
                         <div class="text-center">
