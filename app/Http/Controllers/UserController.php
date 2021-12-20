@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tenant\User;
+use App\Models\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -179,5 +179,15 @@ class UserController extends Controller
         $user->delete();
         
         return redirect()->route('admin.users.index');
+    }
+
+    /* API FLUTTER METODS USERS*/
+    public function login_app() {
+        $email="jsoliz064@gmail.com";
+        $password="12345678";
+        $user=User::where('email',$email)->get();
+        if (password_verify($password,$user[0]['password'])){
+            return json_encode($user[0]['id'],JSON_UNESCAPED_UNICODE);    
+        }
     }
 }
