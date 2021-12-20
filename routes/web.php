@@ -10,6 +10,7 @@ use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\HojaDocumentoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\BitacoraController;
+use App\Http\Controllers\ReporteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,3 +58,6 @@ Route::get('documentos-hojas-edit/{documento}',[HojaDocumentoController::class,'
 Route::post('documentos-hojas-store/{documento}',[HojaDocumentoController::class,'store2'])->name('documentos-hojas.store2');
 
 Route::get('bitacora',[BitacoraController::class,'index'])->name('bitacora.index');
+
+Route::get('reportes-hoy',[ReporteController::class,'reporte_hoy'])->name('reporte.hoy');
+Route::post('reportes-fecha',[ReporteController::class,'reporte_fecha'])->name('reporte.fecha');

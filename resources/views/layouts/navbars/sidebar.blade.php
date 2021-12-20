@@ -101,6 +101,13 @@
                         <i class="fas fa-history text-green"></i> {{ __('Ver Bitacora') }}
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('reporte.hoy') }}">
+                        <i class="fas fa-file-alt text-blue"></i> {{ __('Reportes') }}
+                    </a>
+                </li>
+                
                 
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('clientes.index')}}">
