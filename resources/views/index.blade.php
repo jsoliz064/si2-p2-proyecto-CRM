@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Solid - Bootstrap Business Template</title>
+  <title>Inicio CRM</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -80,6 +80,77 @@
     </div>
     <!-- /container -->
   </div>
+
+  {{--Servicios--}}
+
+            
+     
+    <div class="headerwrapC">
+        <h2 class="title2">Nuestros planes</h2> 
+        <div class="row">    
+             
+          
+           <!--Services Item-->
+           <div class="col-md-6">
+               <div class="services-box">
+                   <div class="services-icon"> </div> 
+                   <div class="services-desc">
+                      <h4>1 MES</h4>
+                      <p>Incluye todas las funcionalidades por 30$</p>
+                   </div>
+               </div>
+           </div>
+            <!--End services Item-->
+            
+            <!--Services Item-->
+           <div class="col-md-6">
+               <div class="services-box">
+                   <div class="services-icon"> </div> 
+                   <div class="services-desc">
+                      <h4>3 MESES</h4>
+                      <p>Incluye todas las funcionalidades por 55$</p>
+                   </div>
+               </div>
+           </div>
+           <!--End services Item-->
+        </div> 
+          
+        <div class="row">    
+           <!--Services Item -->
+           <div class="col-md-6">
+               <div class="services-box">
+
+                
+                   <div class="services-icon"> 
+                   
+                  </div> 
+                   <div class="services-desc">
+                      <h4>6 MESES</h4>
+                      <p>Incluye todas las funcionalidades por 100$ </p>
+                   </div>
+               </div>
+           </div>
+           <!--End services Item-->
+           
+           <!--Services Item-->
+           <div class="col-md-6">
+               <div class="services-box">
+                   <div class="services-icon">  </div> 
+                   <div class="services-desc">
+                      <h4>1 AÑO</h4>
+                      <p>Incluye todas las funcionalidades por 190$ </p>
+                   </div>
+               </div>
+           </div>
+          <!--End services Item-->
+           </div>
+           <div class="headerwrapButtom">
+           <a href="{{route('register')}}" class="btn btn-success" type="button">REGISTRATE YA</a>
+           </div>
+        </div> <!--/.row-->
+      
+</div>
+
 
   <!-- /headerwrap -->
 

@@ -39,7 +39,7 @@ p {
 	margin-bottom: 12px;
 	font-family: 'Lato', sans-serif;
 	font-weight: 400;
-	font-size: 14px;
+	font-size: 20px;
 	line-height: 24px;
 	color: #384452;
 	margin-top: 10px;
@@ -221,6 +221,15 @@ a:focus {
 	padding-top: 200px;
 	padding-bottom: 0px;
 	text-align: center;
+
+}
+.headerwrapButtom {
+	background-color: #e2e8fe;
+	min-height: 50px;
+	padding-top: 20px;
+	padding-bottom: 150px;
+	text-align: center;
+
 }
 .headerwrapL {
 	background-color: #e2e8fe;
@@ -234,7 +243,17 @@ a:focus {
 	min-height: 550px;
 	padding-top: 200px;
 	padding-bottom: 0px;
-	text-align: right;
+	text-align: rigth;
+}
+.headerwrapC {
+	background-color: #e2e8fe;
+	
+	padding-top: 50px;
+	padding-left: 100px;
+	display: inline-flexbox;
+	
+  justify-content: center;
+  text-align: justify;
 }
 
 #headerwrap {
@@ -613,4 +632,53 @@ csmall2 {
 
 .credits {
   color: #fff;
+}
+
+/*otra plantilla*/
+.section2 {
+	padding:100px 0 70px;
+	position:relative;
+}
+
+.section2 .container2 {
+	position:relative;
+}
+/* Services
+/*-----------------------------------------------------------------*/
+
+#services {
+	padding-bottom:50px;
+	background:#FFF;
+}
+
+.services-box {
+	text-align: center;
+	margin-bottom: 70px;
+	border: 2px solid #050505;
+	padding: 49px 20px 30px;
+}
+
+.services-box .services-icon {
+	width: 80px;
+	height: 80px;
+	color: rgb(0, 0, 0);
+	font-size: 42px;
+	line-height: 80px;
+	border-radius: 50%;
+	display: inline-block;
+	margin: 0px auto;
+	background: #7EC13F none repeat scroll 0% 0%;
+}
+
+.services-box .services-desc {
+	margin-top: 25px;
+}
+
+.services-box .services-desc h4 {
+	margin: 31px 0px 20px;
+}
+.title2{
+	background-color: #e2e8fe;
+
+	text-align: center;
 }
