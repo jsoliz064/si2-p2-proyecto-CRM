@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EmpleadoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,5 +37,5 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::resource('users',UserController::class)->names('admin.users');
+Route::resource('empleados',EmpleadoController::class);
 Route::patch('user-profile',[UserController::class,'changeProfile'])->name('user.change.perfil');
-
