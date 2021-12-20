@@ -114,6 +114,20 @@
                                             </span>
                                         @endif
                                     </div>
+
+                                    <div class="form-group{{ $errors->has('fqdn') ? ' has-danger' : '' }}">
+                                      <div class="input-group input-group-alternative mb-3">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="ni ni-fqdn-83"></i></span>
+                                          </div>
+                                          <input class="form-control{{ $errors->has('fqdn') ? ' is-invalid' : '' }}" placeholder="{{ __('Host Name') }}" type="text" name="fqdn" value="{{ old('fqdn') }}" required>
+                                      </div>
+                                      @if ($errors->has('fqdn'))
+                                          <span class="invalid-feedback" style="display: block;" role="alert">
+                                              <strong>{{ $message}}</strong>
+                                          </span>
+                                      @endif
+                                  </div>
                                     
                                     <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                         <div class="input-group input-group-alternative mb-3">

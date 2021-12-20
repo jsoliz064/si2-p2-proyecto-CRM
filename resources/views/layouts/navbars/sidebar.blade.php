@@ -49,35 +49,40 @@
                     </a>
                 </li>
                 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.users.index') }}">
-                        <i class="fas fa-users text-red"></i> {{ __('Administrar Usuarios') }}
-                    </a>
-                </li>
+                
 
                 {{--  desplegable  --}}
 
-                {{--  <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fab fa-laravel" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Laravel Examples') }}</span>
+                        <i class="fas fa-user-shield" style="color: #f4645f;"></i>
+                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Configuraciones') }}</span>
                     </a>
     
                     <div class="collapse show" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('profile.edit') }}">
-                                    {{ __('User profile') }}
+                                <a class="nav-link" href="{{ route('admin.users.index') }}">
+                                    <i class="fas fa-users text-black"></i> {{ __('Administrar Usuarios') }}
                                 </a>
                             </li>
+            
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.index') }}">
-                                    {{ __('User Management') }}
+                                <a class="nav-link" href="{{ route('admin.roles.index') }}">
+                                    <i class="fas fa-user-lock text-blue"></i> {{ __('Administrar Roles') }}
                                 </a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-user-tie text-blue"></i> {{ __('Registrar Empleado') }}
+                                </a>
+                            </li>
+            
+                            
                         </ul>
                     </div>
-                </li>  --}}
+                </li>
     
                
                 </li>
@@ -88,10 +93,11 @@
                     </a> 
                 </li> --}}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-user-tie text-blue"></i> {{ __('Registrar Empleado') }}
+                    <a class="nav-link" href="{{ route('bitacora.index') }}">
+                        <i class="fas fa-history text-green"></i> {{ __('Ver Bitacora') }}
                     </a>
                 </li>
+                
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('clientes.index')}}">
                         <i class="fas fa-address-book text-blue"></i> {{ __('Registrar Cliente') }}

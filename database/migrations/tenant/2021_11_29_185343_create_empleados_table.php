@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClientesTable extends Migration
+class CreateEmpleadosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateClientesTable extends Migration
      */
     public function up()
     {
-        Schema::create('clientes', function (Blueprint $table) {
+        Schema::create('empleados', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('ci');
             $table->string('telefono')->nullable();
-            $table->string('email')->nullable();
             $table->char('sexo')->nullable();
-            $table->string('estado')->nullable();
-            $table->unsignedBigInteger('id_empresa');
-            $table->foreign('id_empresa')->references('id')->on('users')->ondelete('cascade')->onupdate('cascade');
+            //$table->unsignedBigInteger('id_empresa');
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->ondelete('cascade')->onupdate('cascade');
+            //$table->foreign('id_empresa')->references('id')->on('empresas')->ondelete('cascade')->onupdate('cascade');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateClientesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clientes');
+        Schema::dropIfExists('empleados');
     }
 }

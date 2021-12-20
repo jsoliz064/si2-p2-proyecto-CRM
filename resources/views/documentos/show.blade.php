@@ -9,8 +9,9 @@
     <div class="card">
         <div class="card-body">
           <div align="center">
-                <img src="{{asset($hojaDocumento->url)}}" alt="">
+                <img src="{{asset($hojaDocumento->url)}}" alt="" width="50%" height="50%">
           </div>
+          <p><b>Fecha: {{$hojaDocumento->created_at}}</b></p>
         </div>
     </div> 
 </div>

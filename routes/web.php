@@ -8,7 +8,8 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\HojaDocumentoController;
-
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\BitacoraController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,12 +45,15 @@ Route::group(['middleware' => 'auth'], function () {
 Route::resource('users',UserController::class)->names('admin.users');
 Route::patch('user-profile',[UserController::class,'changeProfile'])->name('user.change.perfil');
 
+Route::resource('roles', RoleController::class)->names('admin.roles');
+
 Route::resource('clientes',ClienteController::class);
 Route::resource('empleados',EmpleadoController::class);
 Route::resource('productos',ProductoController::class);
 Route::resource('documentos',DocumentoController::class);
 Route::resource('documentos-hojas',HojaDocumentoController::class);
-Route::get('documentos-hojas-edit,{documento}',[HojaDocumentoController::class,'index2'])->name('documentos-hojas.index2');
-Route::post('documentos-hojas-store,{documento}',[HojaDocumentoController::class,'store2'])->name('documentos-hojas.store2');
 
+Route::get('documentos-hojas-edit/{documento}',[HojaDocumentoController::class,'index2'])->name('documentos-hojas.index2');
+Route::post('documentos-hojas-store/{documento}',[HojaDocumentoController::class,'store2'])->name('documentos-hojas.store2');
 
+Route::get('bitacora',[BitacoraController::class,'index'])->name('bitacora.index');

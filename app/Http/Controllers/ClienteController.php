@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Bitacora;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -14,7 +15,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes=Cliente::where('id_empresa',auth()->user()->id)->get();
+        $clientes=Cliente::all();
         return view('cliente.index',compact('clientes'));
     }
 
@@ -43,9 +44,16 @@ class ClienteController extends Controller
             'email'=>request('email'),
             'sexo'=>request('sexo'),
             'estado'=>request('estado'),
-            'id_empresa' => auth()->user()->id,
 
         ]);
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"crear",
+            'implicado'=>"cliente",
+            'id_implicado'=>$clientes->id,
+        ]);
+
         return redirect()->route('clientes.index');
     }
 
@@ -88,6 +96,14 @@ class ClienteController extends Controller
         $cliente->sexo=$request->sexo;
         $cliente->estado=$request->estado;
         $cliente->save();
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"editar",
+            'implicado'=>"cliente",
+            'id_implicado'=>$cliente->id,
+        ]);
+
         return redirect()->route('clientes.index');
     }
 
@@ -99,7 +115,14 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
+
         $cliente->delete();
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"eliminar",
+            'implicado'=>"cliente",
+            'id_implicado'=>$cliente->id,
+        ]);
         return redirect()->route('clientes.index');
     }
 }

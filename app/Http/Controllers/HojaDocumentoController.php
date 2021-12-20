@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\HojaDocumento;
+use App\Models\Bitacora;
+
 use App\Models\Documento;
 use Illuminate\Support\Facades\Storage;
 
@@ -55,6 +57,13 @@ class HojaDocumentoController extends Controller
             'url' => $url,
             'id_documento' => $documento->id,
         ]);
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"crear",
+            'implicado'=>"hoja-documento",
+            'id_implicado'=>$hojadocumentos->id,
+        ]);
         return redirect()->route('documentos-hojas.index2',$documento);
     }
 
@@ -64,8 +73,9 @@ class HojaDocumentoController extends Controller
      * @param  \App\Models\HojaDocumento  $hojaDocumento
      * @return \Illuminate\Http\Response
      */
-    public function show(HojaDocumento $hojaDocumento)
-    {
+    public function show(HojaDocumento $documentos_hoja)
+    { 
+        $hojaDocumento=$documentos_hoja;
         return view('documentos.show',compact('hojaDocumento'));
     }
 
@@ -98,16 +108,22 @@ class HojaDocumentoController extends Controller
      * @param  \App\Models\HojaDocumento  $hojaDocumento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HojaDocumento $hojaDocumento)
+    public function destroy(HojaDocumento $documentos_hoja)
     {
-        dd($hojaDocumento);
-        $ruta = "public".$hojaDocumento->url;
+        $ruta = "public".$documentos_hoja->url;
         
         if (file_exists("../".$ruta)){
             
             unlink("../".$ruta);
         }
-        $hojaDocumento->delete();
+        $documentos_hoja->delete();
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"eliminar",
+            'implicado'=>"hoja-documento",
+            'id_implicado'=>$documentos_hoja->id,
+        ]);
         return redirect()->route('documentos.index');
     }
 }

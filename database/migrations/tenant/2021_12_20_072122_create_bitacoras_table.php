@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNegociacionsTable extends Migration
+class CreateBitacorasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateNegociacionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('negociacions', function (Blueprint $table) {
+        Schema::create('bitacoras', function (Blueprint $table) {
             $table->id();
-            $table->id();
-            $table->string('nombre');
-            $table->float('monto')->nullable();
-            $table->float('moneda')->nullable();
-            $table->string('cliente');
+            $table->string('user');
+            $table->string('accion');
+            $table->string('implicado')->nullable();
+            $table->string('id_implicado')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateNegociacionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('negociacions');
+        Schema::dropIfExists('bitacoras');
     }
 }
