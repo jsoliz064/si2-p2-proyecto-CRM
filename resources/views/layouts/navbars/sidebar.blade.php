@@ -7,7 +7,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+            <h1> SistemaCRM</h1>
         </a>
       
         
@@ -124,7 +124,15 @@
                         <i class="fas fa-folder-plus text-blue"></i> {{ __('Registrar Documentos') }}
                     </a>
                 </li>
-                
+
+                <li class="nav-item">
+                    {{-- <a class="nav-link" href="{{route('documentos.index')}}">
+                        <i class="fas fa-folder-plus text-blue"></i> {{ __('Registrar Documentos') }}
+                    </a> --}}
+                    <a class="nav-link" id="theme-button"> 
+                        <i class="fas fa-palette"></i> {{ __('Modo oscuro ') }}
+                    </a>
+                </li>
             </ul>
             <!-- Divider -->
             <hr class="my-3">
