@@ -98,6 +98,8 @@
                                     Contraseña: <strong>********</strong>
                             
                         </div>
+                            
+                        <div class="rectangulo">       </div>
                         <form class="col-lg-8 col-lg-offset-2" role="form" method="POST" action="{{ route('login') }}">
                             @csrf
 
@@ -130,6 +132,8 @@
                                 @endif
                             </div>
                             <div class="rectangulo">       </div>
+                                
+                            <div class="rectangulo">       </div>
                             <div class="col-lg-8 col-lg-offset-2">
                                 <input class="custom-control-input" name="remember" id="customCheckLogin" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
                                 <label class="custom-control-label" for="customCheckLogin">
@@ -143,6 +147,8 @@
                         </form>
                     </div>
                 </div>
+                    
+                <div class="rectangulo">       </div>
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="col-6">
                         @if (Route::has('password.request'))
@@ -156,7 +162,12 @@
                             <small>{{ __('Create new account') }}</small>
                         </a>
                     </div>
+                    <div class="rectangulo">       </div>
+                    <div class="rectangulo">       </div>
+                    <div class="rectangulo">       </div>
                 </div>
+                    
+               
             </div>
         </div>
 
