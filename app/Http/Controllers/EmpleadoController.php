@@ -122,7 +122,7 @@ class EmpleadoController extends Controller
 
     public function getEmpleados(){
         $listaEmpleados = new Collection();
-        $empleados = DB::table('empleados');
+        $empleados = Empleado::all();
         foreach ($empleados as $empleado) {
             $listaEmpleados->add($empleado);
         }
