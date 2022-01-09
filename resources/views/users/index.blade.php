@@ -9,7 +9,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col-8">
-                            <h3 class="mb-0">Lista de USUARIOS-EMPRESAS</h3>
+                            <h3 class="mb-0">Lista de Usuarios</h3>
                         </div>
                         
                     </div>
