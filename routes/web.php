@@ -10,8 +10,8 @@ use App\Http\Controllers\HojaDocumentoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\ReporteController;
-use App\Models\User;
-use App\Models\Cliente;
+use App\Http\Controllers\ClienteController;
+
 
 /*
 |--------------------------------------------------------------------------
