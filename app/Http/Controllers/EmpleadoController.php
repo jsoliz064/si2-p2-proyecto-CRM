@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Empleado;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmpleadoController extends Controller
 {
@@ -120,7 +122,10 @@ class EmpleadoController extends Controller
 
     public function getEmpleados(){
         $listaEmpleados = new Collection();
-        $actuaciones = DB::table('empleados');
-        return $actuaciones;
+        $empleados = DB::table('empleados');
+        foreach ($empleados as $empleado) {
+            $listaEmpleados->add($empleado);
+        }
+        return $listaEmpleados;
     }
 }
