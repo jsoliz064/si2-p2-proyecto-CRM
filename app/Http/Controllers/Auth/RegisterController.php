@@ -68,7 +68,9 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        $fqdn = sprintf('%s.%s', $data['fqdn'],env('APP_DOMAIN'));
+        //$fqdn = sprintf('%s.%s', $data['fqdn'],env('APP_DOMAIN'));
+        $fqdn="proyectocrm.test/".$data['fqdn'];
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -114,7 +116,9 @@ class RegisterController extends Controller
         $usuario->db=$website->uuid;
         $usuario->save(); */
 
-        $fqdn=sprintf('%s.%s', request('fqdn'),"proyectocrm.test");
+        $fqdn="proyectocrm.test/".request('fqdn');
+        //dd($fqdn);
+        //$fqdn="proyectocrm.test/".request('fqdn');
         $website = new Website;
         $website->uuid=Str::random(10);
         

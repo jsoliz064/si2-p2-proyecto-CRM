@@ -11,6 +11,9 @@ use App\Http\Controllers\HojaDocumentoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\ReporteController;
+use App\Models\User;
+use App\Models\Cliente;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,7 +33,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+//Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
@@ -61,3 +64,10 @@ Route::get('bitacora',[BitacoraController::class,'index'])->name('bitacora.index
 
 Route::get('reportes-hoy',[ReporteController::class,'reporte_hoy'])->name('reporte.hoy');
 Route::post('reportes-fecha',[ReporteController::class,'reporte_fecha'])->name('reporte.fecha');
+
+//$user=User::find(2)->db;
+Route::prefix('jsoliz')->group(function(){
+	Route::get('/',function(){
+		return Cliente::all();
+	})->name('home');
+});
