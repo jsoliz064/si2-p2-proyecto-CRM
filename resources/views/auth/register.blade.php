@@ -115,7 +115,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="form-group{{ $errors->has('fqdn') ? ' has-danger' : '' }}">
+                                    {{--  <div class="form-group{{ $errors->has('fqdn') ? ' has-danger' : '' }}">
                                       <div class="input-group input-group-alternative mb-3">
                                           <div class="input-group-prepend">
                                               <span class="input-group-text"><i class="ni ni-fqdn-83"></i></span>
@@ -127,7 +127,7 @@
                                               <strong>{{ $message}}</strong>
                                           </span>
                                       @endif
-                                  </div>
+                                  </div>  --}}
                                     
                                     <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                         <div class="input-group input-group-alternative mb-3">
