@@ -14,7 +14,9 @@ class CitaController extends Controller
      */
     public function index()
     {
-        //
+        $citas=Cita::all();
+        
+        return view('citas.index',compact('citas'));
     }
 
     /**

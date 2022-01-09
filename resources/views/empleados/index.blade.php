@@ -9,10 +9,10 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col-md-8">
-                          <h3 class="mb-0"><b>LISTA DE CLIENTES</b></h3>
+                          <h3 class="mb-0"><b>LISTA DE EMPLEADOS</b></h3>
                         </div>
                         <div align="right" class="col-md-4">
-                            <a href="{{route('clientes.create')}}" class="btn btn-primary">Registrar Cliente</a>
+                            <a href="{{route('empleados.create')}}" class="btn btn-primary">Registrar Empleado</a>
                         </div>
                     </div>
                 </div>
@@ -30,24 +30,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($clientes as $cliente)
+                            @foreach ($empleados as $empleado)
                             {{-- @php  $usuario = App\Models\User::find($user->id);  @endphp --}}
                             <tr>
-                              <td>{{$cliente->id}}</td>
-                              <td>{{$cliente->nombre}}</td>
-                              <td>{{$cliente->telefono}}</td>
-                              <td>{{$cliente->email}}</td>
-                              <td>{{$cliente->estado}}</td>
+                              <td>{{$empleado->id}}</td>
+                              <td>{{$empleado->ci}}</td>
+                              <td>{{DB::table('users')->where('id',$empleado->id_user)->value('name')}}</td>
+                              <td>{{$empleado->telefono}}</td>
+                              <td>{{DB::table('users')->where('id',$empleado->id_user)->value('email')}}</td>
                               {{--  <td class="text-right">
                                   <div class="dropdown">
                                       <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                           <i class="fas fa-ellipsis-v"></i>
                                       </a>
                                       <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <form  action="{{route('clientes.destroy',$cliente)}}" method="post">
+                                        <form  action="{{route('empleados.destroy',$empleado)}}" method="post">
                                           @csrf
                                           @method('delete')
-                                            <a class="dropdown-item" href="{{route('clientes.edit',$cliente)}}">Ver o Editar</a>
+                                            <a class="dropdown-item" href="{{route('empleados.edit',$empleado)}}">Ver o Editar</a>
                                             <button class="dropdown-item" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" 
                                             value="Borrar">Eliminar</button>
                                         </form>
@@ -55,11 +55,11 @@
                                   </div>
                               </td>  --}}
                               <td class="text-right">
-                                <form  action="{{route('clientes.destroy',$cliente)}}" method="post">
+                                <form  action="{{route('empleados.destroy',$empleado)}}" method="post">
                                   @csrf
                                   @method('delete')
                                    
-                                    <a class="btn btn-info btn-sm" href="{{route('clientes.edit',$cliente)}}">Ver o Editar</a> 
+                                    <a class="btn btn-info btn-sm" href="{{route('empleados.edit',$empleado)}}">Ver o Editar</a> 
                                     <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" 
                                     value="Borrar">Eliminar</button>
                                 </form>

@@ -29,7 +29,6 @@
                         <th scope="col">Nombre</th>
                         {{-- <th scope="col" colspan="2"></th> --}}
                         <th scope="col"></th>
-                        <th scope="col"></th>
 
                     </tr>
                 </thead>
@@ -39,23 +38,16 @@
                         <tr>
                             <td>{{ $role->id }}</td>
                             <td>{{ $role->name }}</td>
-
-                            <td width="10px">
-                                {{-- @can('roles.edit') --}}
-                                <a href="{{ route('admin.roles.edit', $role) }}" class="btn btn-sm btn-primary">Editar</a>
-                                {{-- @endcan --}}
-                            </td>
-
-                            <td width="10px">
-                                {{-- @can('roles.destroy') --}}
-                                <form action="{{ route('admin.roles.destroy', $role) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
+                            <td class="text-right">
+                                <form  action="{{route('admin.roles.destroy',$role)}}" method="post">
+                                  @csrf
+                                  @method('delete')
+                                   
+                                    <a class="btn btn-info btn-sm" href="{{route('admin.roles.edit',$role)}}">Ver o Editar</a> 
+                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" 
                                     value="Borrar">Eliminar</button>
                                 </form>
-                                {{-- @endcan --}}
-                            </td>
+                              </td>
                         </tr>
                     @endforeach
                 </tbody>
