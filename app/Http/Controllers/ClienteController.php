@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use App\Models\Bitacora;
 use Illuminate\Http\Request;
+use App\Mail\MessageReceived;
+use Illuminate\Support\Facades\Mail;
+
 
 class ClienteController extends Controller
 {
@@ -15,6 +18,15 @@ class ClienteController extends Controller
      */
     public function index()
     {
+        /* $message=request()->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'content' => 'required',
+        ]); */
+        $message="xd";
+        Mail::to('jsoliz064@gmail.com')->queue(new MessageReceived($message));
+        return new MessageReceived($message);
         $clientes=Cliente::all();
         return view('cliente.index',compact('clientes'));
     }

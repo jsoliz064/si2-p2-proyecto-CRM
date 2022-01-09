@@ -8,22 +8,22 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="{{asset('img/favicon.png')}}" rel="icon">
+  <link href="{{asset('img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,900|Lato:400,900" rel="stylesheet">
-
+ 
   <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/prettyphoto/css/prettyphoto.css" rel="stylesheet">
-  <link href="lib/hover/hoverex-all.css" rel="stylesheet">
+  <link href="{{asset('lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/prettyphoto/css/prettyphoto.css')}}" rel="stylesheet">
+  <link href="{{asset('lib/hover/hoverex-all.css')}}" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
   <!-- =======================================================
     Template Name: Solid
@@ -115,7 +115,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="form-group{{ $errors->has('fqdn') ? ' has-danger' : '' }}">
+                                    {{--  <div class="form-group{{ $errors->has('fqdn') ? ' has-danger' : '' }}">
                                       <div class="input-group input-group-alternative mb-3">
                                           <div class="input-group-prepend">
                                               <span class="input-group-text"><i class="ni ni-fqdn-83"></i></span>
@@ -127,7 +127,7 @@
                                               <strong>{{ $message}}</strong>
                                           </span>
                                       @endif
-                                  </div>
+                                  </div>  --}}
                                     
                                     <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                         <div class="input-group input-group-alternative mb-3">
@@ -569,16 +569,16 @@
   <!-- / copyrights -->
 
   <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/php-mail-form/validate.js"></script>
-  <script src="lib/prettyphoto/js/prettyphoto.js"></script>
-  <script src="lib/isotope/isotope.min.js"></script>
-  <script src="lib/hover/hoverdir.js"></script>
-  <script src="lib/hover/hoverex.min.js"></script>
+  <script src="{{asset('lib/jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('lib/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('lib/php-mail-form/validate.js')}}"></script>
+  <script src="{{asset('lib/prettyphoto/js/prettyphoto.js')}}"></script>
+  <script src="{{asset('lib/isotope/isotope.min.js')}}"></script>
+  <script src="{{asset('lib/hover/hoverdir.js')}}"></script>
+  <script src="{{asset('lib/hover/hoverex.min.js')}}"></script>
 
   <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
+  <script src="{{asset('js/main.js')}}"></script>
 
 {{--Formulario--}}
  

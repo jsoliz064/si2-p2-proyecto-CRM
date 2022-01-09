@@ -14,10 +14,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 /* MULTI TENANCY */
-use Hyn\Tenancy\Models\Hostname;
+/* use Hyn\Tenancy\Models\Hostname;
 use Hyn\Tenancy\Models\Website;
 use Hyn\Tenancy\Repositories\HostnameRepository;
-use Hyn\Tenancy\Repositories\WebsiteRepository;
+use Hyn\Tenancy\Repositories\WebsiteRepository; */
 
 
 
@@ -53,11 +53,11 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-        $hostname=app(\Hyn\Tenancy\Environment::class)->hostname();
+        /* $hostname=app(\Hyn\Tenancy\Environment::class)->hostname();
         if ($hostname){
             $fqdn=$hostname->fqdn;
             $this->tenanName=explode(".",$fqdn)[0];
-        }
+        } */
     }
 
     /**

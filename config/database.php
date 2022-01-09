@@ -46,7 +46,7 @@ return [
             
         ],
 
-        'system' => [
+        /* 'system' => [
             'driver' => 'mysql',
             'host' => env('TENANCY_HOST', '127.0.0.1'),
             'port' => env('TENANCY_PORT', '3306'),
@@ -60,7 +60,7 @@ return [
             'strict' => true,
             'engine' => null,
             
-        ],
+        ], */
         
         /* 'tenant' => [
             'driver' => 'mysql',
