@@ -126,6 +126,6 @@ class EmpleadoController extends Controller
         foreach ($empleados as $empleado) {
             $listaEmpleados->add($empleado);
         }
-        return $listaEmpleados;
+        return $listaEmpleados; 
     }
 }

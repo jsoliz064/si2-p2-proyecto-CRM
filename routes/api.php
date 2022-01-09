@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\ClienteController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,4 +24,5 @@ Route::post('login',[UserController::class,'login']);
 route:: get('hola',[UserController::class,'hola']);
 
 Route::get('getEmpleados',[EmpleadoController::class,'getEmpleados']);
+Route::get('getClientes',[ClienteController::class,'getClientes']);
 
