@@ -9,7 +9,7 @@ use Hyn\Tenancy\Traits\UsesTenantConnection;
 class Documento extends Model
 {
     use HasFactory;
-    use UsesTenantConnection;
+    /* use UsesTenantConnection; */
     protected $table="documentos";
     protected $guarded=['id','created_at','updated_at'];
 }

@@ -182,12 +182,35 @@ class UserController extends Controller
     }
 
     /* API FLUTTER METODS USERS*/
-    public function login_app() {
-        $email="jsoliz064@gmail.com";
-        $password="12345678";
-        $user=User::where('email',$email)->get();
-        if (password_verify($password,$user[0]['password'])){
-            return json_encode($user[0]['id'],JSON_UNESCAPED_UNICODE);    
+    // public function login_app() {
+    //     $email="jsoliz064@gmail.com";
+    //     $password="12345678";
+    //     $user=User::where('email',$email)->get();
+    //     if (password_verify($password,$user[0]['password'])){
+    //         return json_encode($user[0]['id'],JSON_UNESCAPED_UNICODE);    
+    //     }
+
+        public function login(Request $request){
+            $request->validate([
+                'email' => 'required|string',
+                'password' => 'required|string'
+            ]);
+    
+            /* if($request->name = '' || $request->password == '')
+                return response()->json(['message' => 'These credentials do not match our records.'], 404); */
+    
+            if(!DB::table('users')->where('email', $request->email)->exists()){
+                return response()->json(['message' => 'TTTThese credentials do not match our records.'], 404);
+            }
+    
+            $user = User::where('email', $request->email)->firstOrFail();
+            if(Hash::check($request->password, $user->password)){
+                return $user;
+            }else{
+                return response()->json(['message' => 'These credentials do not match our records.'], 404);
+            }
         }
-    }
+
 }
+    
+
