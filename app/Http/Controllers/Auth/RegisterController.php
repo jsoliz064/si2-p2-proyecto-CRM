@@ -69,14 +69,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         //$fqdn = sprintf('%s.%s', $data['fqdn'],env('APP_DOMAIN'));
-        $fqdn="proyectocrm.test/".$data['fqdn'];
+        /* $fqdn="proyectocrm.test/".$data['fqdn']; */
 
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'fqdn' => ['required', 'string', 'max:20',Rule::unique('hostnames')->where(function ($query) use ($fqdn){
+            /* 'fqdn' => ['required', 'string', 'max:20',Rule::unique('hostnames')->where(function ($query) use ($fqdn){
                 return $query->where('fqdn',$fqdn);
-            })],
+            })], */
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -116,7 +116,7 @@ class RegisterController extends Controller
         $usuario->db=$website->uuid;
         $usuario->save(); */
 
-        $fqdn="proyectocrm.test/".request('fqdn');
+        /* $fqdn="proyectocrm.test/".request('fqdn');
         //dd($fqdn);
         //$fqdn="proyectocrm.test/".request('fqdn');
         $website = new Website;
@@ -127,6 +127,6 @@ class RegisterController extends Controller
         $hostname = new Hostname;
         $hostname->fqdn=$fqdn;
         $hostname=app(HostnameRepository::class)->create($hostname);
-        app(HostnameRepository::class)->attach($hostname, $website);
+        app(HostnameRepository::class)->attach($hostname, $website); */
     }
 } 
