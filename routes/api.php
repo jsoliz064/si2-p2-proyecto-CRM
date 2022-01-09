@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EmpleadoController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('login',[UserController::class,'login']);
 route:: get('hola',[UserController::class,'hola']);
+
+Route::post('get',[EmpleadoController::class,'getEmpleados']);
 

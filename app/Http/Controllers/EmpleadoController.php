@@ -117,4 +117,10 @@ class EmpleadoController extends Controller
         $user->delete();
         return redirect()->route('empleados.index');
     }
+
+    public function getEmpleados(){
+        $listaEmpleados = new Collection();
+        $actuaciones = DB::table('empleados');
+        return $actuaciones;
+    }
 }
