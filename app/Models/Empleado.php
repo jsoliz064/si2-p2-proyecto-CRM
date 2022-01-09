@@ -9,7 +9,7 @@ use Hyn\Tenancy\Traits\UsesTenantConnection;
 class Empleado extends Model
 {
     use HasFactory;
-    use UsesTenantConnection;
+    /* use UsesTenantConnection; */
     protected $table="empleados";
     protected $guarded=['id','created_at','updated_at'];
 }
