@@ -24,9 +24,9 @@ class ClienteController extends Controller
             'subject' => 'required',
             'content' => 'required',
         ]); */
-        $message="xd";
+        /* $message="xd";
         Mail::to('jsoliz064@gmail.com')->queue(new MessageReceived($message));
-        return new MessageReceived($message);
+        return new MessageReceived($message); */
         $clientes=Cliente::all();
         return view('cliente.index',compact('clientes'));
     }
