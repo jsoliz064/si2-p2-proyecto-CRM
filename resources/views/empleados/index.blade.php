@@ -22,10 +22,10 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">ID</th>
+                                <th scope="col">CI</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Telefono</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Estado</th>
+                                <th scope="col">E-mail</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
