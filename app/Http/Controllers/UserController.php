@@ -191,6 +191,7 @@ class UserController extends Controller
     //     }
 
         public function login(Request $request){
+
             $request->validate([
                 'email' => 'required|string',
                 'password' => 'required|string'
@@ -200,7 +201,7 @@ class UserController extends Controller
                 return response()->json(['message' => 'These credentials do not match our records.'], 404); */
     
             if(!DB::table('users')->where('email', $request->email)->exists()){
-                return response()->json(['message' => 'TTTThese credentials do not match our records.'], 404);
+                return response()->json(['message' => 'These credentials do not match our records.'], 404);
             }
     
             $user = User::where('email', $request->email)->firstOrFail();
@@ -210,7 +211,9 @@ class UserController extends Controller
                 return response()->json(['message' => 'These credentials do not match our records.'], 404);
             }
         }
-
+        public function hola(){
+            return "hola";
+        }
 }
     
 
