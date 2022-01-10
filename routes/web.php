@@ -87,3 +87,4 @@ Route::post('pago-store/{pedido}',[PagoController::class,'store_pago'])->name('p
 Route::resource('tipo_de_pagos',TipoDePagoController::class);
 
 Route::get('factura-correo-send/{pedido}',[PagoController::class,'send_factura'])->name('factura.send');
+Route::get('reporte-pdf/{tabla}',[ReporteController::class,'convert_pdf'])->name('reporte.pdf');
