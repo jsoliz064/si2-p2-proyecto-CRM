@@ -15,6 +15,12 @@ class CreateDetallePedidosTable extends Migration
     {
         Schema::create('detalle_pedidos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_producto');
+            $table->foreign('id_producto')->references('id')->on('productos')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('id_pedido');
+            $table->foreign('id_pedido')->references('id')->on('pedidos')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('cantidad')->nullable();
+            $table->float('importe')->nullable();
             $table->timestamps();
         });
     }
