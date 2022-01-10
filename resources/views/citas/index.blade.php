@@ -31,9 +31,9 @@
                             </div>
                             @endforeach
                         </div>
-                        <div align="center" class="d-flex justify-content-center">>
+                        <div align="center" class="d-flex justify-content-center">
                             
-                                {!! $citas->links() !!}
+                                {!! $citas->links("pagination::bootstrap-4") !!}
                             
                         </div>
 
