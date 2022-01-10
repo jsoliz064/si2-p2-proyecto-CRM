@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Cita;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Collection;
+
 class CitaController extends Controller
 {
     /**
@@ -88,4 +91,15 @@ class CitaController extends Controller
     {
         //
     }
+
+    public function getCitas($idUsuario){
+        $listaClientes = new Collection();
+        $clientes = DB::table('citas')->where('idUsuario', $idUsuario)->get();
+        foreach ($clientes as $cliente) {
+            $listaClientes->add($cliente);
+        }
+        return $listaClientes; 
+    }
+
+
 }
