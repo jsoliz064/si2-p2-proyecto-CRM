@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Models\Bitacora;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Mail\MessageReceived;
 use Illuminate\Support\Facades\Mail;
 
@@ -137,4 +139,14 @@ class ClienteController extends Controller
         ]);
         return redirect()->route('clientes.index');
     }
+
+    public function getClientes(){
+        $listaClientes = new Collection();
+        $clientes = Cliente::all();
+        foreach ($clientes as $cliente) {
+            $listaClientes->add($cliente);
+        }
+        return $listaClientes; 
+    }
+
 }

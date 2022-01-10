@@ -142,8 +142,12 @@ class EmpleadoController extends Controller
         $listaEmpleados = new Collection();
         $empleados = Empleado::all();
         foreach ($empleados as $empleado) {
+            //esto no lo hagan en casa 
+            $idUser = $empleado->id_user;
+            $user = User::find($idUser);
+            $empleado->ci = $user->name; 
             $listaEmpleados->add($empleado);
         }
-        return $listaEmpleados;
+        return $listaEmpleados; 
     }
 }
