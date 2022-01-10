@@ -24,10 +24,10 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">ID</th>
+                                <th scope="col">CI</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Telefono</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Estado</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -36,10 +36,10 @@
                             {{-- @php  $usuario = App\Models\User::find($user->id);  @endphp --}}
                             <tr>
                               <td>{{$cliente->id}}</td>
+                              <td>{{$cliente->ci}}</td>
                               <td>{{$cliente->nombre}}</td>
                               <td>{{$cliente->telefono}}</td>
                               <td>{{$cliente->email}}</td>
-                              <td>{{$cliente->estado}}</td>
                               {{--  <td class="text-right">
                                   <div class="dropdown">
                                       <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -119,7 +119,7 @@
                 
                   <div class="form-group">
                 <h5>Cliente:</h5>
-            <select name = "idCliente" id="idCliente" class="mi-selector form-control" onchange="habilitar()" >
+            <select name = "idCliente" id="idCliente" class="form-control">
                 <option value="">Seleccione el cliente</option>
                     @foreach ($clientes as $cliente)
                         <option value="{{$cliente->id}}">

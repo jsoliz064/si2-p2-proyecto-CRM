@@ -6,6 +6,7 @@ use App\Models\Pedido;
 use App\Models\Producto;
 use App\Models\Cliente;
 use App\Models\DetallePedido;
+use App\Models\TipoDePago;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -19,9 +20,9 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
-        $pedidos=Pedido::all();
-        return view('pedido.index', compact('pedidos'));//
+        $tipo_de_pagos=TipoDePago::all();
+        $pedidos=Pedido::where('estado',"NO ENTREGADO")->get();
+        return view('pedido.index', compact('pedidos','tipo_de_pagos'));//
     }
 
     /**

@@ -44,7 +44,9 @@
                                 <form  action="{{route('pedidos.destroy',$pedido)}}" method="post">
                                   @csrf
                                   @method('delete')
-                                   
+                                  
+                                    <a class="btn btn-success btn-sm" href="{{route('pedido.pago.create',$pedido)}}">completado</a> 
+
                                     <a class="btn btn-info btn-sm" href="{{route('pedidos.edit',$pedido)}}">Editar</a> 
                                     <button class="btn btn-sm boton"  onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" 
                                     value="Borrar"><i class="fas fa-trash-alt text-red"></i></button>
@@ -62,9 +64,9 @@
                 </div>
             </div>
         </div>
-    </div>
-        
+    </div>  
 </div>
+
 @endsection
 
 @push('js')
