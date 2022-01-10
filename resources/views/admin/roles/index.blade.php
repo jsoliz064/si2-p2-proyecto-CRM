@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<head>
+    <link rel="stylesheet" href="{{asset('css/cruds.css')}}">
+</head>
+
 <div class="container-fluid mt--7">
     @if (session('info'))
         <div class="alert alert-success">
@@ -44,8 +48,8 @@
                                   @method('delete')
                                    
                                     <a class="btn btn-info btn-sm" href="{{route('admin.roles.edit',$role)}}">Ver o Editar</a> 
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" 
-                                    value="Borrar">Eliminar</button>
+                                    <button class="btn btn-sm boton"  onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" 
+                                    value="Borrar"><i class="fas fa-trash-alt text-red"></i></button>
                                 </form>
                               </td>
                         </tr>

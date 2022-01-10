@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<head>
+    <link rel="stylesheet" href="{{asset('css/cruds.css')}}">
+</head>
+
 
 <div class="container-fluid mt--7">
     <div class="row">

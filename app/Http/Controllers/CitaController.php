@@ -6,7 +6,7 @@ use App\Models\Cita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use Illuminate\Support\Facades\DB;
+
 use Illuminate\Database\Eloquent\Collection;
 
 class CitaController extends Controller

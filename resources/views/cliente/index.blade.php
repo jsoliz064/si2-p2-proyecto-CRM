@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
+<head>
+    <link rel="stylesheet" href="{{asset('css/cruds.css')}}">
+</head>
 <div class="container-fluid mt--7">
     <div class="row">
         <div class="col">
@@ -60,8 +62,8 @@
                                   @method('delete')
                                    
                                     <a class="btn btn-info btn-sm" href="{{route('clientes.edit',$cliente)}}">Ver o Editar</a> 
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" 
-                                    value="Borrar">Eliminar</button>
+                                    <button class="btn btn-sm boton"  onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" 
+                                    value="Borrar"><i class="fas fa-trash-alt text-red"></i></button>
                                 </form>
                               </td>
                             </tr>

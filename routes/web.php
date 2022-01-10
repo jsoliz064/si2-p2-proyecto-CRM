@@ -15,6 +15,9 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\DetallePedidoController;
+use App\Http\Controllers\PagoController;
+use App\Http\Controllers\TipoDePagoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -75,9 +78,5 @@ Route::get('detalle-pedido-create/{cliente}',[DetallePedidoController::class,'cr
 Route::resource('detalle_pedidos',DetallePedidoController::class);
 
 Route::resource('noticias',NoticiaController::class);
-/* //$user=User::find(2)->db;
-Route::prefix('jsoliz')->group(function(){
-	Route::get('/',function(){
-		return Cliente::all();
-	})->name('home');
-}); */
+Route::resource('pagos',PagoController::class);
+Route::resource('tipo_de_pagos',TipoDePagoController::class);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TipoDePago;
+use App\Models\Bitacora;
 use Illuminate\Http\Request;
 
 class TipoDePagoController extends Controller
@@ -14,7 +15,8 @@ class TipoDePagoController extends Controller
      */
     public function index()
     {
-        //
+        $tipo_de_pagos=TipoDePago::all();
+        return view('tipo_de_pagos.index',compact('tipo_de_pagos'));
     }
 
     /**
@@ -35,7 +37,21 @@ class TipoDePagoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required', 
+         ]);
+
+        date_default_timezone_set("America/La_Paz");
+        $tipo_de_pago=TipoDePago::create([
+            'nombre'=>request('nombre'),
+        ]);
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"crear",
+            'implicado'=>"tipo de pago",
+            'id_implicado'=>$tipo_de_pago->id,
+        ]);
+        return redirect()->route('tipo_de_pagos.index');
     }
 
     /**
@@ -57,7 +73,7 @@ class TipoDePagoController extends Controller
      */
     public function edit(TipoDePago $tipoDePago)
     {
-        //
+        return view('tipo_de_pagos.edit', compact('tipoDePago'));
     }
 
     /**
@@ -69,7 +85,20 @@ class TipoDePagoController extends Controller
      */
     public function update(Request $request, TipoDePago $tipoDePago)
     {
-        //
+        $request->validate([
+            'nombre' => 'required', 
+         ]);
+        date_default_timezone_set("America/La_Paz");
+        $tipoDePago->nombre=$request->nombre;
+        $tipoDePago->save();
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"editar",
+            'implicado'=>"tipo de pago",
+            'id_implicado'=>$tipoDePago->id,
+        ]);
+        return redirect()->route('tipo_de_pagos.index');
     }
 
     /**
@@ -80,6 +109,14 @@ class TipoDePagoController extends Controller
      */
     public function destroy(TipoDePago $tipoDePago)
     {
-        //
+        $tipoDePago->delete();
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"eliminar",
+            'implicado'=>"tipo de pago",
+            'id_implicado'=>$tipoDePago->id,
+        ]);
+        return redirect()->route('tipo_de_pagos.index');
     }
 }

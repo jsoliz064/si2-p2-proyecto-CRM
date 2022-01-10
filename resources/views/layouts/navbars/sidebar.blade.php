@@ -90,7 +90,6 @@
                 </li>
                 @endcan
                
-                </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link" href="{{ route('table') }}">
                       <i class="ni ni-bullet-list-67 text-default"></i>
@@ -125,17 +124,40 @@
                         <i class="fas fa-store text-blue"></i> {{ __('Registrar Producto') }}
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('pedidos.index')}}">
-                        <i class="fas fa-cart-plus text-blue"></i> {{ __('Registrar Pedido') }}
-                    </a>
-                </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <i class="fas fa-receipt text-blue"></i> {{ __('Registrar Factura') }}
+                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                        <i class="fas fa-user-shield" style="color: #f4645f;"></i>
+                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Contabilidad') }}</span>
                     </a>
+    
+                    <div class="collapse show" id="navbar-examples">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('pedidos.index')}}">
+                                    <i class="fas fa-cart-plus text-blue"></i> {{ __('Registrar Pedido') }}
+                                </a>
+                            </li>
+            
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('pagos.index')}}">
+                                    <i class="fas fa-receipt text-blue"></i> {{ __('Ver Pagos') }}
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('tipo_de_pagos.index')}}">
+                                    <i class="fas fa-receipt text-blue"></i> {{ __('Tipos de Pagos') }}
+                                </a>
+                            </li>
+            
+                            
+                        </ul>
+                    </div>
                 </li>
+                
+
+                
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('documentos.index')}}">

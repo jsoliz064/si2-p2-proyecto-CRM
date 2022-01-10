@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<head>
-    <link rel="stylesheet" href="{{asset('css/cruds.css')}}">
-</head>
+
 <div class="container-fluid mt--7">
     <div class="row">
         <div class="col">
@@ -11,11 +9,11 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col-md-8">
-                          <h3 class="mb-0"><b>LISTA DE PEDIDOS</b></h3>
+                          <h3 class="mb-0"><b>HISTORIAL DE PAGOS</b></h3>
                         </div>
-                        <div align="right" class="col-md-4">
-                            <a href="{{route('pedidos.create')}}" class="btn btn-primary">Registrar Pedido</a>
-                        </div>
+                        {{--  <div align="right" class="col-md-4">
+                            <a href="{{route('clientes.create')}}" class="btn btn-primary">Registrar Cliente</a>
+                        </div>  --}}
                     </div>
                 </div>
 
@@ -24,30 +22,28 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Cliente</th>
-                                <th scope="col">Fecha y hora</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">Estado</th>
+                                <th scope="col">Tipo de Pago</th>
+                                <th scope="col">Monto</th>
+                                <th scope="col">Fecha</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($pedidos as $pedido)
+                            @foreach ($pagos as $pago)
                             {{-- @php  $usuario = App\Models\User::find($user->id);  @endphp --}}
                             <tr>
-                              <td>{{$pedido->id}}</td>
-                              <td>{{DB::table('clientes')->where('id',$pedido->id_cliente)->value('nombre')}}</td>
-                              <td>{{$pedido->created_at}}</td>
-                              <td>{{$pedido->total}} bs</td>
-                              <td>{{$pedido->estado}}</td>
+                              <td>{{$pago->id}}</td>
+                              <td>{{DB::table('tipo_de_pagos')->where('id',$pago->id_tipopago)->value('nombre')}}</td>
+                              <td>{{DB::table('pedidos')->where('id',$pago->id_pedido)->value('total')}}</td>
+                              <td>{{$pago->created_at}}</td>
                               <td class="text-right">
-                                <form  action="{{route('pedidos.destroy',$pedido)}}" method="post">
+                                <form  action="{{route('pagos.destroy',$pago)}}" method="post">
                                   @csrf
                                   @method('delete')
-                                   
-                                    <a class="btn btn-info btn-sm" href="{{route('pedidos.edit',$pedido)}}">Editar</a> 
-                                    <button class="btn btn-sm boton"  onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" 
-                                    value="Borrar"><i class="fas fa-trash-alt text-red"></i></button>
+                                    <a class="btn btn-info btn-sm" href="{{route('pagos.show',$pago)}}">Comprobante</a> 
+                                    <a class="btn btn-info btn-sm" href="{{route('pedidos.edit',$pago->id_pedido)}}">Ver pedido</a> 
+                                    <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" 
+                                    value="Borrar">Eliminar</button>
                                 </form>
                               </td>
                             </tr>
