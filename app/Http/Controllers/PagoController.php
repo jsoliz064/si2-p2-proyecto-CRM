@@ -8,6 +8,8 @@ use App\Models\TipoDePago;
 use App\Models\Bitacora;
 use App\Models\DetallePedido;
 use App\Models\Cliente;
+use App\Mail\MessageReceived;
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Http\Request;
 
@@ -23,6 +25,8 @@ class PagoController extends Controller
         $pagos=Pago::all();
         return view('pagos.index',compact('pagos'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -85,6 +89,20 @@ class PagoController extends Controller
         $detalle_pedidos=DetallePedido::where('id_pedido',$pedido->id)->get();
         $cliente=Cliente::find($pedido->id_cliente);
         return view('pagos.show',compact ('pedido','detalle_pedidos','cliente'));
+    }
+    public function send_factura(Pedido $pedido)
+    {
+        /* $message=request()->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'content' => 'required',
+        ]); */
+        $message=$pedido;
+        $cliente=Cliente::find($pedido->id_cliente);
+        Mail::to($cliente->email)->queue(new MessageReceived($message));
+        //return new MessageReceived($message);
+        return redirect()->route('pagos.index')->with('info', 'El correo ha sido enviado exitosamente');
     }
 
     /**

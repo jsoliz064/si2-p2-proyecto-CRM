@@ -85,3 +85,5 @@ Route::resource('pagos',PagoController::class);
 Route::post('pago-store/{pedido}',[PagoController::class,'store_pago'])->name('pedido.pago.store');
 
 Route::resource('tipo_de_pagos',TipoDePagoController::class);
+
+Route::get('factura-correo-send/{pedido}',[PagoController::class,'send_factura'])->name('factura.send');

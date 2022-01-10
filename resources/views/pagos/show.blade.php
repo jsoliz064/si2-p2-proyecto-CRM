@@ -130,6 +130,11 @@
         </div>
     </div> 
 </div>
+<div class="row my-4">
+  <div align="center" class="col">
+      <a href="{{route('factura.send',$pedido)}}"class="btn btn-success text-white btn-sm">Enviar por correo</a>
+  </div>
+</div>
 @endsection
 
 @push('js')

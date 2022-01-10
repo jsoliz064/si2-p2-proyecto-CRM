@@ -4,6 +4,7 @@
 <head>
     <link rel="stylesheet" href="{{asset('css/cruds.css')}}">
 </head>
+
 <div class="container-fluid mt--7">
     <div class="row">
         <div class="col">
@@ -24,6 +25,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">ID</th>
+                                <th scope="col">Cliente</th>
                                 <th scope="col">Tipo de Pago</th>
                                 <th scope="col">Monto</th>
                                 <th scope="col">Fecha</th>
@@ -32,9 +34,10 @@
                         </thead>
                         <tbody>
                             @foreach ($pagos as $pago)
-                            {{-- @php  $usuario = App\Models\User::find($user->id);  @endphp --}}
+                            @php  $pedido = App\Models\Pedido::find($pago->id_pedido);  @endphp
                             <tr>
                               <td>{{$pago->id}}</td>
+                              <td>{{DB::table('clientes')->where('id',$pedido->id_cliente)->value('nombre')}}</td>
                               <td>{{DB::table('tipo_de_pagos')->where('id',$pago->id_tipopago)->value('nombre')}}</td>
                               <td>{{DB::table('pedidos')->where('id',$pago->id_pedido)->value('total')}}</td>
                               <td>{{$pago->created_at}}</td>
@@ -52,13 +55,19 @@
                             @endforeach
                         </tbody>
                     </table>
+                    
                 </div>
-            
+                
             </div>
         </div>
     </div>
-        
+    @if (session('info'))
+    <div class="alert alert-success">
+        {{ session('info') }}
+    </div>
+    @endif
 </div>
+
 @endsection
 
 @push('js')
