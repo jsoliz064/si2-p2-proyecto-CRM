@@ -14,7 +14,7 @@ class CitaController extends Controller
      */
     public function index()
     {
-        $citas=Cita::all();
+        $citas=Cita::paginate(3);
         
         return view('citas.index',compact('citas'));
     }
@@ -26,7 +26,11 @@ class CitaController extends Controller
      */
     public function create()
     {
-        //
+        Cita::create([
+            'asunto'=>"REUNION",
+            'url'=>"argon/img/theme/Sin-perfil.jpg",
+        ]);
+        return redirect()->route('citas.index');
     }
 
     /**

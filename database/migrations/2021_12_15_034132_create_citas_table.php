@@ -15,6 +15,8 @@ class CreateCitasTable extends Migration
     {
         Schema::create('citas', function (Blueprint $table) {
             $table->id();
+            $table->string('asunto');
+            $table->string('url');
             $table->timestamps();
         });
     }
