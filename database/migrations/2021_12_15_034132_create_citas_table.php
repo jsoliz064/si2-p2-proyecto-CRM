@@ -24,6 +24,7 @@ class CreateCitasTable extends Migration
             $table->unsignedBigInteger('idCliente');
             $table->unsignedBigInteger('idUsuario');
             $table->timestamps();
+            $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('idUsuario')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
