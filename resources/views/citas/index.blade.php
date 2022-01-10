@@ -60,9 +60,7 @@
                         </div>
 
                     @else
-                    <div align="center">
-                        <p>vacio</p>
-                    </div>
+                    
                     @endif
                        
                       
