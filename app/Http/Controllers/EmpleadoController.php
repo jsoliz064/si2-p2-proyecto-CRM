@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Empleado;
 use App\Models\User;
+use App\Models\Bitacora;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -62,6 +64,13 @@ class EmpleadoController extends Controller
             'sexo'=>request('sexo'),
             'id_user'=>$id_user->id,
         ]);
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"crear",
+            'implicado'=>"empleado",
+            'id_implicado'=>$empleados->id,
+        ]);
+
         return redirect()->route('empleados.index');
     }
 
@@ -121,6 +130,13 @@ class EmpleadoController extends Controller
         $empleado->save();
         $user->save();
 
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"editar",
+            'implicado'=>"empleado",
+            'id_implicado'=>$empleado->id,
+        ]);
+
         return redirect()->route('empleados.index');
     }
 
@@ -135,6 +151,14 @@ class EmpleadoController extends Controller
         $user=User::find($empleado->id_user);
         $empleado->delete();
         $user->delete();
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"eliminar",
+            'implicado'=>"empleado",
+            'id_implicado'=>$empleado->id,
+        ]);
+
         return redirect()->route('empleados.index');
     }
 

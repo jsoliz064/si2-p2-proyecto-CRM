@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Noticia;
+use App\Models\Bitacora;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -50,6 +52,12 @@ class NoticiaController extends Controller
             
         ]);
 
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"crear",
+            'implicado'=>"noticias",
+            'id_implicado'=>$noticia->id,
+        ]);
        
         return redirect()->route('noticias.index'); //show
     }
@@ -93,6 +101,13 @@ class NoticiaController extends Controller
       
         
         $noticia->save();
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"editar",
+            'implicado'=>"noticias",
+            'id_implicado'=>$noticia->id,
+        ]);
         return redirect()->route('noticias.index');
     }
 
@@ -105,7 +120,13 @@ class NoticiaController extends Controller
     public function destroy(Noticia $noticia)
     {
         //
-        $noticia->delete();      
+        $noticia->delete();
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"eliminar",
+            'implicado'=>"noticias",
+            'id_implicado'=>$noticia->id,
+        ]);      
         
         return redirect()->route('noticias.index');
     }

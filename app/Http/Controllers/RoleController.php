@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use App\Models\Bitacora;
 
 class RoleController extends Controller
 {
@@ -55,6 +56,14 @@ class RoleController extends Controller
         // $lastActivity = Activity::all()->last();
         // $lastActivity->subject_id = $users->id;
         // $lastActivity->save();
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"crear",
+            'implicado'=>"roles",
+            'id_implicado'=>$role->id,
+        ]);
+
         return redirect()->route('admin.roles.edit', $role)->with('info','El rol se creó con éxito');
     }
 
@@ -96,6 +105,13 @@ class RoleController extends Controller
 
         $role->update($request->all());
         $role->permissions()->sync($request->permissions);//asignamos los permisos al rol creado
+        
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"editar",
+            'implicado'=>"roles",
+            'id_implicado'=>$role->id,
+        ]);
         return redirect()->route('admin.roles.edit', $role)->with('info','El rol se actualizo con éxito');
     }
 
@@ -108,6 +124,12 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"eliminar",
+            'implicado'=>"roles",
+            'id_implicado'=>$role->id,
+        ]);
 
         return redirect()->route('admin.roles.index')->with('info', 'El rol se eliminó con éxito');
     }

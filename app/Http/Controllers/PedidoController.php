@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pedido;
 use App\Models\Producto;
 use App\Models\Cliente;
+use App\Models\Bitacora;
 use App\Models\DetallePedido;
 use App\Models\TipoDePago;
 
@@ -58,6 +59,13 @@ class PedidoController extends Controller
             'estado'=>"NO ENTREGADO"
         ]);
 
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"crear",
+            'implicado'=>"pedidos",
+            'id_implicado'=>$pedido->id,
+        ]);
+
        
         return redirect()->route('detalle.pedido.create',$cliente); //show
     }
@@ -106,10 +114,13 @@ class PedidoController extends Controller
         $pedido->importe=$request->importe;
         $pedido->save();
 
-      /*  activity()->useLog('Pedido')->log('Editar')->subject();
-        $lastActivity = Activity::all()->last();
-        $lastActivity->subject_id = $pedido->id;
-        $lastActivity->save();*/
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"editar",
+            'implicado'=>"pedidos",
+            'id_implicado'=>$pedido->id,
+        ]);
+
         return redirect()->route('pedidos.index');//
     }
 
@@ -131,6 +142,13 @@ class PedidoController extends Controller
             }
         }        
         $pedido->delete();
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"eliminar",
+            'implicado'=>"pedidos",
+            'id_implicado'=>$pedido->id,
+        ]);
         return redirect()->route('pedidos.index');
     }
 }

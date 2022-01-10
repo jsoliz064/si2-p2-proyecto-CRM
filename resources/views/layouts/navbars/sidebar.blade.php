@@ -96,23 +96,29 @@
                        <span class="nav-link-text">Tables</span> 
                     </a> 
                 </li> --}}
+                @can('empresa')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('bitacora.index') }}">
                         <i class="fas fa-history text-green"></i> {{ __('Ver Bitacora') }}
                     </a>
                 </li>
+                @endcan
 
+                @can('empresa')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('reporte.hoy') }}">
                         <i class="fas fa-file-alt text-blue"></i> {{ __('Reportes') }}
                     </a>
                 </li>
+                @endcan
                 
+                @can('empresa')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('noticias.index') }}">
                         <i class="fas fa-folder-plus text-blue"></i> {{ __('Noticias') }}
                     </a>
                 </li>
+                @endcan
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('clientes.index')}}">
