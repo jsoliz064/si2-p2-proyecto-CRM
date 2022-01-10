@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Pedido;
 use App\Models\Producto;
 use App\Models\Cliente;
+use App\Models\Bitacora;
 use App\Models\DetallePedido;
+use App\Models\TipoDePago;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -19,9 +21,9 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
-        $pedidos=Pedido::all();
-        return view('pedido.index', compact('pedidos'));//
+        $tipo_de_pagos=TipoDePago::all();
+        $pedidos=Pedido::where('estado',"NO ENTREGADO")->get();
+        return view('pedido.index', compact('pedidos','tipo_de_pagos'));//
     }
 
     /**
@@ -55,6 +57,13 @@ class PedidoController extends Controller
             'id_cliente'=>request('id_cliente'),
             'total'=>0,
             'estado'=>"NO ENTREGADO"
+        ]);
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"crear",
+            'implicado'=>"pedidos",
+            'id_implicado'=>$pedido->id,
         ]);
 
        
@@ -105,10 +114,13 @@ class PedidoController extends Controller
         $pedido->importe=$request->importe;
         $pedido->save();
 
-      /*  activity()->useLog('Pedido')->log('Editar')->subject();
-        $lastActivity = Activity::all()->last();
-        $lastActivity->subject_id = $pedido->id;
-        $lastActivity->save();*/
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"editar",
+            'implicado'=>"pedidos",
+            'id_implicado'=>$pedido->id,
+        ]);
+
         return redirect()->route('pedidos.index');//
     }
 
@@ -130,6 +142,13 @@ class PedidoController extends Controller
             }
         }        
         $pedido->delete();
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"eliminar",
+            'implicado'=>"pedidos",
+            'id_implicado'=>$pedido->id,
+        ]);
         return redirect()->route('pedidos.index');
     }
 }

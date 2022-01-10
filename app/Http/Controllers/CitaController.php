@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Cita;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
-
-use Illuminate\Database\Eloquent\Collection;
 
 class CitaController extends Controller
 {
@@ -144,13 +143,21 @@ class CitaController extends Controller
     }
 
     public function getCitas($idUsuario){
-        $listaClientes = new Collection();
-        $clientes = DB::table('citas')->where('idUsuario', $idUsuario)->get();
-        foreach ($clientes as $cliente) {
-            $listaClientes->add($cliente);
+        $listaCitas = new Collection();
+        $citas = DB::table('citas')->where('idUsuario', $idUsuario)->get();
+        foreach ($citas as $cita) {
+            $listaCitas->add($cita);
         }
-        return $listaClientes; 
+        return $listaCitas; 
     }
 
+    public function getCitasAll(){
+        $listaCitas = new Collection();
+        $citas = Cita::all();
+        foreach ($citas as $cita) {
+            $listaCitas->add($cita);
+        }
+        return $listaCitas; 
+    }
 
 }

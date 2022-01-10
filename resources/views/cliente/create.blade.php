@@ -9,6 +9,13 @@
             </div>
             <form method="post" action="{{route('clientes.store')}}" novalidate >
                 @csrf
+
+                <h5>Carnet de Identidad:</h5>
+                <input type="text"  name="ci" class="focus border-primary  form-control" >
+                @error('ci')
+                <p>DEBE INGRESAR BIEN SU NOMBRE</p>
+                @enderror
+
                 <h5>Nombre Completo:</h5>
                 <input type="text"  name="nombre" class="focus border-primary  form-control" >
                 @error('nombre')
@@ -45,18 +52,6 @@
                     @enderror
                 </div> 
 
-                <div class="form-group">
-                    <h5>Estado:</h5>
-                    <select name="estado" id="select-estado"  class="focus border-primary  form-control">
-                        <option >Elegir una Opcion</option>
-                        <option value="Disponible">Disponible</option>
-                        <option value="No Disponible">No Disponible</option>
-                    </select>
-
-                    @error('estado')
-                        <p>DEBE INGRESAR BIEN EL DATO</p>
-                    @enderror
-                </div>
                 
                 <br>
                 <div align="center">

@@ -74,9 +74,16 @@ Route::post('reportes-fecha',[ReporteController::class,'reporte_fecha'])->name('
 Route::resource('citas',CitaController::class);
 
 Route::resource('pedidos',PedidoController::class);
+Route::get('pedido-pago/{pedido}',[PagoController::class,'create_pago'])->name('pedido.pago.create');
+
 Route::get('detalle-pedido-create/{cliente}',[DetallePedidoController::class,'create_detalle'])->name('detalle.pedido.create');
 Route::resource('detalle_pedidos',DetallePedidoController::class);
 
 Route::resource('noticias',NoticiaController::class);
+
 Route::resource('pagos',PagoController::class);
+Route::post('pago-store/{pedido}',[PagoController::class,'store_pago'])->name('pedido.pago.store');
+
 Route::resource('tipo_de_pagos',TipoDePagoController::class);
+
+Route::get('factura-correo-send/{pedido}',[PagoController::class,'send_factura'])->name('factura.send');

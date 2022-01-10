@@ -20,15 +20,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        /* $message=request()->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'subject' => 'required',
-            'content' => 'required',
-        ]); */
-        /* $message="xd";
-        Mail::to('jsoliz064@gmail.com')->queue(new MessageReceived($message));
-        return new MessageReceived($message); */
+        
         $clientes=Cliente::all();
         return view('cliente.index',compact('clientes'));
     }
@@ -51,8 +43,15 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'ci'=>'required',
+            'nombre'=>'required',
+
+        ]);
+
         date_default_timezone_set("America/La_Paz");
         $clientes=Cliente::create([
+            'ci'=>request('ci'),
             'nombre'=>request('nombre'),
             'telefono'=>request('telefono'),
             'email'=>request('email'),
@@ -103,12 +102,17 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
+        $request->validate([
+            'ci'=>'required',
+            'nombre'=>'required',
+
+        ]);
         date_default_timezone_set("America/La_Paz");
+        $cliente->ci=$request->ci;
         $cliente->nombre=$request->nombre;
         $cliente->telefono=$request->telefono;
         $cliente->email=$request->email;
         $cliente->sexo=$request->sexo;
-        $cliente->estado=$request->estado;
         $cliente->save();
 
         $bitacoras=Bitacora::create([
