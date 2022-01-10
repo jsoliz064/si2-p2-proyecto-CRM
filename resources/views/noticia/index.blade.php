@@ -40,7 +40,7 @@
                              
                              
                               <td class="text-right">
-                                <form  action="{{route('noticias.destroy',$cliente)}}" method="post">
+                                <form  action="{{route('noticias.destroy',$noticia)}}" method="post">
                                   @csrf
                                   @method('delete')
                                    
