@@ -25,7 +25,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">ID</th>
-                                {{--  <th scope="col">Cliente</th>  --}}
+                                <th scope="col">Cliente</th>
                                 <th scope="col">Tipo de Pago</th>
                                 <th scope="col">Monto</th>
                                 <th scope="col">Fecha</th>
@@ -37,7 +37,7 @@
                             @php  $pedido = App\Models\Pedido::find($pago->id_pedido);  @endphp
                             <tr>
                               <td>{{$pago->id}}</td>
-                              {{--  <td>{{DB::table('clientes')->where('id',$pedido->id_cliente)->value('nombre')}}</td>  --}}
+                              <td>{{DB::table('clientes')->where('id',$pedido->id_cliente)->value('nombre')}}</td>
                               <td>{{DB::table('tipo_de_pagos')->where('id',$pago->id_tipopago)->value('nombre')}}</td>
                               <td>{{DB::table('pedidos')->where('id',$pago->id_pedido)->value('total')}}</td>
                               <td>{{$pago->created_at}}</td>
