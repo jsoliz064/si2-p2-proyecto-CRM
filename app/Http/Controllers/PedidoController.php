@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pedido;
+use App\Models\Producto;
+use App\Models\Cliente;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PedidoController extends Controller
@@ -15,6 +18,8 @@ class PedidoController extends Controller
     public function index()
     {
         //
+        $pedidos=Pedido::all();
+        return view('pedido.index', compact('pedidos'));//
     }
 
     /**
@@ -25,6 +30,9 @@ class PedidoController extends Controller
     public function create()
     {
         //
+        $clientes = DB::table('clientes')->get();
+        $productos = DB::table('productos')->get();
+        return view('pedido.create',['clientes'=> $clientes,'productos' => $productos]);
     }
 
     /**
@@ -36,6 +44,16 @@ class PedidoController extends Controller
     public function store(Request $request)
     {
         //
+        date_default_timezone_set("America/La_Paz");
+        $pedido=Pedido::create([
+            'nroCliente'=>request('nroCliente'),
+            'hora' => date('H:i'),
+            'fecha' => date('Y/m/d'),
+            'importe'=>0
+        ]);
+
+       
+        return redirect()->route('pedidos.index'); //show
     }
 
     /**
@@ -47,6 +65,9 @@ class PedidoController extends Controller
     public function show(Pedido $pedido)
     {
         //
+       $detallePedido= DB::table('detalle_pedidos')->where('pedido_id',$pedido->id)->get();
+       
+        return view('pedido.show',compact ('detalle_pedidos'));
     }
 
     /**
@@ -58,6 +79,8 @@ class PedidoController extends Controller
     public function edit(Pedido $pedido)
     {
         //
+        $clientes = DB::table('clientes')->get();
+        return view('pedido.edit',compact('pedido'),['clientes'=>$clientes]);
     }
 
     /**
@@ -70,6 +93,16 @@ class PedidoController extends Controller
     public function update(Request $request, Pedido $pedido)
     {
         //
+        date_default_timezone_set("America/La_Paz");
+        $pedido->nroCliente=$request->nroCliente;
+        $pedido->importe=$request->importe;
+        $pedido->save();
+
+      /*  activity()->useLog('Pedido')->log('Editar')->subject();
+        $lastActivity = Activity::all()->last();
+        $lastActivity->subject_id = $pedido->id;
+        $lastActivity->save();*/
+        return redirect()->route('pedidos.index');//
     }
 
     /**
@@ -81,5 +114,9 @@ class PedidoController extends Controller
     public function destroy(Pedido $pedido)
     {
         //
+        $pedido->delete();
+       
+        
+        return redirect()->route('pedidos.index');
     }
 }

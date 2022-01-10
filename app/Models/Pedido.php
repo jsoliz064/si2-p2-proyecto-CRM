@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     use HasFactory;
+    protected $table='pedidos';
+    protected $guarded = ['id','created_at','updated_at'];
 }
