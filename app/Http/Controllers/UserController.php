@@ -211,6 +211,16 @@ class UserController extends Controller
                 return response()->json(['message' => 'These credentials do not match our records.'], 404);
             }
         }
+
+        public function getUsers(){
+            $listaUsers = new Collection();
+            $users = User::all();
+            foreach ($users as $user) {
+                $listaUsers->add($user);
+            }
+            return $listaUsers; 
+        }
+
         public function hola(){
             return "hola";
         }
