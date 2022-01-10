@@ -144,13 +144,21 @@ class CitaController extends Controller
     }
 
     public function getCitas($idUsuario){
-        $listaClientes = new Collection();
-        $clientes = DB::table('citas')->where('idUsuario', $idUsuario)->get();
-        foreach ($clientes as $cliente) {
-            $listaClientes->add($cliente);
+        $listaCitas = new Collection();
+        $citas = DB::table('citas')->where('idUsuario', $idUsuario)->get();
+        foreach ($citas as $cita) {
+            $listaCitas->add($cita);
         }
-        return $listaClientes; 
+        return $listaCitas; 
     }
 
+    public function getCitasAll(){
+        $listaCitas = new Collection();
+        $citas = Citas::all();
+        foreach ($citas as $cita) {
+            $listaCitas->add($cita);
+        }
+        return $listaCitas; 
+    }
 
 }
