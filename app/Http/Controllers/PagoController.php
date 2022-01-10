@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pago;
+use App\Models\Pedido;
+use App\Models\TipoDePago;
+use App\Models\Bitacora;
+use App\Models\DetallePedido;
+use App\Models\Cliente;
+
 use Illuminate\Http\Request;
 
 class PagoController extends Controller
@@ -27,6 +33,11 @@ class PagoController extends Controller
     {
         //
     }
+    public function create_pago(Pedido $pedido)
+    {
+        $tipo_de_pagos=TipoDePago::all();
+        return view('pagos.create',compact ('pedido','tipo_de_pagos'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -38,7 +49,30 @@ class PagoController extends Controller
     {
         //
     }
+    public function store_pago(Request $request,Pedido $pedido)
+    {
+        date_default_timezone_set("America/La_Paz");
+        $request->validate([
+            'id_tipopago'=>'required'
+        ]);
+        $pago=Pago::create([
+            'id_pedido'=>$pedido->id,
+            'id_tipopago'=>$request->id_tipopago,            
+        ]);
 
+        $pedido->update([
+            'estado'=>"ENTREGADO"
+        ]);
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"crear",
+            'implicado'=>"pagos",
+            'id_implicado'=>$pago->id,
+        ]);
+        return redirect()->route('pagos.index');
+    }
+    
     /**
      * Display the specified resource.
      *
@@ -47,7 +81,10 @@ class PagoController extends Controller
      */
     public function show(Pago $pago)
     {
-        return view('pago.show',compact ('pago'));
+        $pedido=Pedido::find($pago->id_pedido);
+        $detalle_pedidos=DetallePedido::where('id_pedido',$pedido->id)->get();
+        $cliente=Cliente::find($pedido->id_cliente);
+        return view('pagos.show',compact ('pedido','detalle_pedidos','cliente'));
     }
 
     /**
@@ -81,6 +118,18 @@ class PagoController extends Controller
      */
     public function destroy(Pago $pago)
     {
-        //
+        $pedido=Pedido::find($pago->id_pedido);
+        $pedido->update([
+            'estado'=>"NO ENTREGADO"
+        ]);
+        $pago->delete();
+
+        $bitacoras=Bitacora::create([
+            'user'=>auth()->user()->name,
+            'accion'=>"eliminar",
+            'implicado'=>"pagos",
+            'id_implicado'=>$pago->id,
+        ]);
+        return redirect()->route('pagos.index');
     }
 }

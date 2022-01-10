@@ -22,6 +22,8 @@ class CreateEmpleadosTable extends Migration
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->ondelete('cascade')->onupdate('cascade');
             //$table->foreign('id_empresa')->references('id')->on('empresas')->ondelete('cascade')->onupdate('cascade');
+            $table->string('estado')->nullable();
+
             $table->timestamps();
         });
     }
