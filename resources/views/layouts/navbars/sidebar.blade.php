@@ -167,7 +167,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('citas.index')}}">
-                        <i class="fas fa-folder-plus text-blue"></i> {{ __('Ver Citas') }}
+                        <i class="far fa-calendar text-blue"></i> {{ __('Ver Citas') }}
                     </a>
                 </li>
 
