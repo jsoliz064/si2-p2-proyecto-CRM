@@ -23,9 +23,9 @@
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Cliente</th>
-                                <th scope="col">Hora</th>
-                                <th scope="col">Fecha</th>
-                                <th scope="col">Importe</th>
+                                <th scope="col">Fecha y hora</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Estado</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -34,26 +34,10 @@
                             {{-- @php  $usuario = App\Models\User::find($user->id);  @endphp --}}
                             <tr>
                               <td>{{$pedido->id}}</td>
-                              <td>{{DB::table('clientes')->where('id',$pedido->nroCliente)->value('nombre')}}</td>
-                              <td>{{$pedido->hora}}</td>
-                              <td>{{$pedido->fecha}}</td>
-                              <td>{{$pedido->importe}}</td>
-                              {{--  <td class="text-right">
-                                  <div class="dropdown">
-                                      <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                          <i class="fas fa-ellipsis-v"></i>
-                                      </a>
-                                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <form  action="{{route('clientes.destroy',$cliente)}}" method="post">
-                                          @csrf
-                                          @method('delete')
-                                            <a class="dropdown-item" href="{{route('clientes.edit',$cliente)}}">Ver o Editar</a>
-                                            <button class="dropdown-item" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" 
-                                            value="Borrar">Eliminar</button>
-                                        </form>
-                                      </div>
-                                  </div>
-                              </td>  --}}
+                              <td>{{DB::table('clientes')->where('id',$pedido->id_cliente)->value('nombre')}}</td>
+                              <td>{{$pedido->created_at}}</td>
+                              <td>{{$pedido->total}} bs</td>
+                              <td>{{$pedido->estado}}</td>
                               <td class="text-right">
                                 <form  action="{{route('pedidos.destroy',$pedido)}}" method="post">
                                   @csrf

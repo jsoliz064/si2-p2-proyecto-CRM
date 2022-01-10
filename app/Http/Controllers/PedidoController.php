@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Pedido;
 use App\Models\Producto;
 use App\Models\Cliente;
+use App\Models\DetallePedido;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -30,8 +32,8 @@ class PedidoController extends Controller
     public function create()
     {
         //
-        $clientes = DB::table('clientes')->get();
-        $productos = DB::table('productos')->get();
+        $clientes = Cliente::all();
+        $productos = Producto::all();
         return view('pedido.create',['clientes'=> $clientes,'productos' => $productos]);
     }
 
@@ -45,15 +47,18 @@ class PedidoController extends Controller
     {
         //
         date_default_timezone_set("America/La_Paz");
+        $request->validate([
+            'id_cliente'=>'required'
+        ]);
+        $cliente=Cliente::find($request->id_cliente);
         $pedido=Pedido::create([
-            'nroCliente'=>request('nroCliente'),
-            'hora' => date('H:i'),
-            'fecha' => date('Y/m/d'),
-            'importe'=>0
+            'id_cliente'=>request('id_cliente'),
+            'total'=>0,
+            'estado'=>"NO ENTREGADO"
         ]);
 
        
-        return redirect()->route('pedidos.index'); //show
+        return redirect()->route('detalle.pedido.create',$cliente); //show
     }
 
     /**
@@ -79,8 +84,10 @@ class PedidoController extends Controller
     public function edit(Pedido $pedido)
     {
         //
-        $clientes = DB::table('clientes')->get();
-        return view('pedido.edit',compact('pedido'),['clientes'=>$clientes]);
+        $cliente = Cliente::find($pedido->id_cliente);
+        //return view('pedido.edit',compact('pedido'),['clientes'=>$clientes]);
+        return redirect()->route('detalle.pedido.create',$cliente); //show
+
     }
 
     /**
@@ -113,10 +120,16 @@ class PedidoController extends Controller
      */
     public function destroy(Pedido $pedido)
     {
-        //
+        $detalle_pedidos=DetallePedido::where('id_pedido',$pedido->id)->get();
+        if ($detalle_pedidos) {
+            foreach($detalle_pedidos as $detalle_pedido){
+                $dato=Producto::find($detalle_pedido->id_producto);
+                $dato->update([
+                    'stock'=>$dato->stock+$detalle_pedido->cantidad,
+                ]);
+            }
+        }        
         $pedido->delete();
-       
-        
         return redirect()->route('pedidos.index');
     }
 }

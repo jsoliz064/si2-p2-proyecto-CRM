@@ -15,13 +15,11 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('nroCliente');
-            $table->time('hora')->nullable();
-            $table->date('fecha')->nullable();
-            $table->integer('importe');
-                 
+            $table->unsignedBigInteger('id_cliente');
+            $table->float('total');
+            $table->string('estado');
             $table->timestamps();
-            $table->foreign('nroCliente')->references('id')->on('clientes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_cliente')->references('id')->on('clientes')->onDelete('cascade')->onUpdate('cascade');
             
         });
     }

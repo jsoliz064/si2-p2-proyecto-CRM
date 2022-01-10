@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CitaController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,6 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('login',[UserController::class,'login']);
 route:: get('hola',[UserController::class,'hola']);
 
+
+Route::get('getUsers',[UserController::class,'getUsers']);
 Route::get('getEmpleados',[EmpleadoController::class,'getEmpleados']);
 Route::get('getClientes',[ClienteController::class,'getClientes']);
 
+Route::get('getCitas/{idUsuario}',[CitaController::class,'getCitas']);

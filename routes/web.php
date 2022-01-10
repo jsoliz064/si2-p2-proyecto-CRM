@@ -14,6 +14,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\NoticiaController;
+use App\Http\Controllers\DetallePedidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +69,11 @@ Route::get('reportes-hoy',[ReporteController::class,'reporte_hoy'])->name('repor
 Route::post('reportes-fecha',[ReporteController::class,'reporte_fecha'])->name('reporte.fecha');
 
 Route::resource('citas',CitaController::class);
+
 Route::resource('pedidos',PedidoController::class);
+Route::get('detalle-pedido-create/{cliente}',[DetallePedidoController::class,'create_detalle'])->name('detalle.pedido.create');
+Route::resource('detalle_pedidos',DetallePedidoController::class);
+
 Route::resource('noticias',NoticiaController::class);
 /* //$user=User::find(2)->db;
 Route::prefix('jsoliz')->group(function(){

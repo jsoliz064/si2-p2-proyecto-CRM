@@ -19,7 +19,7 @@
                     <div class="col-4"></div>
 
                     <div class="col-4 my-4" align="center">
-                        <select name = "nroCliente" id="nroCliente" class="mi-selector form-control">
+                        <select name = "id_cliente" id="id_cliente" class="mi-selector form-control">
                         <option value="nulo">Seleccione un Cliente</option>
                             @foreach ($clientes as $cliente)
                                 <option value="{{$cliente->id}}">

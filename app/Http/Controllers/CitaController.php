@@ -6,6 +6,9 @@ use App\Models\Cita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Collection;
+
 class CitaController extends Controller
 {
     /**
@@ -125,4 +128,15 @@ class CitaController extends Controller
             
         return redirect()->route('citas.index');
     }
+
+    public function getCitas($idUsuario){
+        $listaClientes = new Collection();
+        $clientes = DB::table('citas')->where('idUsuario', $idUsuario)->get();
+        foreach ($clientes as $cliente) {
+            $listaClientes->add($cliente);
+        }
+        return $listaClientes; 
+    }
+
+
 }
