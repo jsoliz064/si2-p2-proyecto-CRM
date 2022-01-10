@@ -100,7 +100,7 @@ class CitaController extends Controller
         //
         $clientes= DB::table('clientes')->get();
         $users= DB::table('users')->get();
-        return view('cita.edit',compact('cita'),['clientes'=>$clientes],['users'=>$users]);
+        return view('citas.edit',compact('cita'),['clientes'=>$clientes],['users'=>$users]);
     }
 
     /**
@@ -113,6 +113,20 @@ class CitaController extends Controller
     public function update(Request $request, Cita $cita)
     {
         //
+        date_default_timezone_set("America/La_Paz");
+        $cita->asunto=$request->asunto;
+        $cita->descripcion=$request->descripcion;
+        $cita->fecha=$request->fecha;
+        $cita->horaInicio=$request->horaInicio;
+        $cita->horaFin=$request->horaFin;
+        $cita->idCliente=$request->idCliente;
+        $cita->save();
+
+      /*  activity()->useLog('Pedido')->log('Editar')->subject();
+        $lastActivity = Activity::all()->last();
+        $lastActivity->subject_id = $pedido->id;
+        $lastActivity->save();*/
+        return redirect()->route('citas.index');//
     }
 
     /**

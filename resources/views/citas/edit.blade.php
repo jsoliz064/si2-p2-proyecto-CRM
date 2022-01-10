@@ -5,64 +5,55 @@
     <div class="card">
         <div class="card-body">
             <div align="center">
-                <h1>Editar Cliente</h1>
+                <h1>Editar Cita</h1>
             </div>
-            <form method="post" action="{{route('clientes.update',$cliente)}}" novalidate >
+            <form method="post" action="{{route('citas.update',$cita)}}" novalidate >
                 @csrf
                 @method('PATCH')
-                <h5>Nombre Completo:</h5>
-                <input type="text"  name="nombre" value="{{$cliente->nombre}}" class="focus border-primary  form-control" >
+                <h5>Asunto:</h5>
+                <input type="text"  name="asunto" value="{{$cita->asunto}}" class="focus border-primary  form-control" >
                 @error('nombre')
                 <p>DEBE INGRESAR BIEN SU NOMBRE</p>
                 @enderror
 
-
-                <h5>Telefono:</h5>
-                <input type="text" name="telefono"  value="{{$cliente->telefono}}" class="focus border-primary  form-control" >
-
-
-                @error('telefono')
-                    <p>DEBE INGRESAR BIEN SU TELEFONO</p>
+                <h5>Descripción:</h5>
+                <input type="text"  name="descripcion" value="{{$cita->descripcion}}" class="focus border-primary  form-control" >
+                @error('nombre')
+                <p>DEBE INGRESAR BIEN SU NOMBRE</p>
                 @enderror
 
-                <h5>Email:</h5>
-                <input type="text" name="email"  value="{{$cliente->email}}"class="focus border-primary  form-control" >
-
-
-                @error('email')
-                    <p>DEBE INGRESAR BIEN SU EMAIL</p>
+                <h5>Fecha:</h5>
+                <input type="date"  name="fecha" value="{{$cita->fecha}}" class="focus border-primary  form-control" >
+                @error('nombre')
+                
+                @enderror
+                <h5>Hora de Inicio:</h5>
+                <input type="time"  name="horaInicio" value="{{$cita->horaInicio}}" class="focus border-primary  form-control" >
+                @error('nombre')
+                
                 @enderror
 
-                <div class="form-group">
-                    <h5>Sexo:</h5>
-                    <select name="sexo" id="select-sexo"  class="focus border-primary  form-control">
-                        <option value="{{$cliente->sexo}}">{{$cliente->sexo}}</option>
-                        <option value="F">Femenino</option>
-                        <option value="M">Masculino</option>
-                    </select>
-
-                    @error('sexo')
-                        <p>DEBE INGRESAR BIEN SU SEXO</p>
-                    @enderror
-                </div> 
-
-                <div class="form-group">
-                    <h5>Estado:</h5>
-                    <select name="estado" id="select-estado"  class="focus border-primary  form-control">
-                        <option value="{{$cliente->estado}}">{{$cliente->estado}}</option>
-                        <option value="Disponible">Disponible</option>
-                        <option value="No Disponible">No Disponible</option>
-                    </select>
-
-                    @error('estado')
-                        <p>DEBE INGRESAR BIEN EL DATO</p>
-                    @enderror
-                </div>
+              
+                <h5>Hora de Fin:</h5>
+                <input type="time"  name="horaFin" value="{{$cita->horaFin}}" class="focus border-primary  form-control" >
+                @error('nombre')
+                
+                @enderror
+               
+                <h5>Cliente:</h5>
+                <select name = "idCliente" id="idCliente" value="{{$cita->idCliente}}" class="form-control" onchange="habilitar()" >
+                    <option value="nulo">Seleccione un Cliente</option>
+                        @foreach ($clientes as $cliente)
+                            <option value="{{$cliente->id}}">
+                                {{$cliente->nombre}}
+                            </option>
+                        @endforeach
+                </select>
                 
                 <br>
                 <div align="center">
                     <button  class="btn btn-danger btn-sm" type="submit">Registrar</button>
-                    <a href="{{route('clientes.index')}}"class="btn btn-warning text-white btn-sm">Volver</a>
+                    <a href="{{route('citas.index')}}"class="btn btn-warning text-white btn-sm">Volver</a>
                 </div>
             </form>
 
