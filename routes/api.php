@@ -29,4 +29,5 @@ Route::get('getUsers',[UserController::class,'getUsers']);
 Route::get('getEmpleados',[EmpleadoController::class,'getEmpleados']);
 Route::get('getClientes',[ClienteController::class,'getClientes']);
 
+Route::get('getCitasAll',[CitaController::class,'getCitasAll']);
 Route::get('getCitas/{idUsuario}',[CitaController::class,'getCitas']);
