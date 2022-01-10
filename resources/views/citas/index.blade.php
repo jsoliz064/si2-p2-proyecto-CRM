@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-
+<head>
+    <link rel="stylesheet" href="{{asset('css/select.css')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+</head>
 <div class="container-fluid mt--7">
     <div class="row">
         <div class="col">
@@ -25,12 +28,27 @@
                     @if ($citas)
                         <div class="card-group">
                             @foreach ($citas as $cita)
-                            <div class="card mx-2">
-                                <img class="card-img-top" src="" alt="Card image cap" width="20%" height="40%">
+                            <div class="card ">
+                              
                                 <div class="card-body">
-                                <h5 class="card-title">{{$cita->asunto}}</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                <i class="fas fa-pen-square fa-10x" style="color: rgb(86, 67, 131)" ></i>
+                                <h5 class="card-title">Asunto: {{$cita->asunto}}</h5>
+                                <p class="card-text">Descripcion: {{$cita->descripcion}}</p>
+
+                                <p class="card-text"> Cliente: {{DB::table('clientes')->where('id',$cita->idCliente)->value('nombre')}}</p>
+                                <p class="card-text">Fecha: {{$cita->fecha}}</p>
+                                <p class="card-text">Hora de inicio: {{$cita->horaInicio}}</p>
+                                <p class="card-text">Hora de fin: {{$cita->horaFin}}</p>
+                                @csrf
+
+                                <form  action="{{route('citas.destroy',$cita)}}" method="post">
+                                    @csrf
+                                @method('delete')
+                                 
+                                  <a class="btn btn-info btn-sm" href="{{route('citas.edit',$cita)}}">Ver o Editar</a> 
+                                  <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" 
+                                  value="Borrar">Eliminar</button>
+                              </form>
                                 </div>
                             </div>
                             @endforeach
@@ -99,9 +117,9 @@
                     <input type="time" class="form-control" name="horaFin">
                   </div>
                 
-
+                  <div class="form-group">
                 <h5>Cliente:</h5>
-            <select name = "idCliente" id="idCliente" class="form-control" onchange="habilitar()" >
+            <select name = "idCliente" id="idCliente" class="mi-selector form-control" onchange="habilitar()" >
                 <option value="">Seleccione el cliente</option>
                     @foreach ($clientes as $cliente)
                         <option value="{{$cliente->id}}">
@@ -109,6 +127,7 @@
                         </option>
                     @endforeach
             </select>
+                  </div>
 
          {{--    <h5>Empleado:</h5>
             <select name = "idUser" id="idUser" class="form-control" onchange="habilitar()" >
@@ -134,6 +153,9 @@
   <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
   <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <script src="{{asset('js/mi-script.js')}}"></script>
   <script>
     $(document).ready(function() {
      $('#clientes').DataTable();

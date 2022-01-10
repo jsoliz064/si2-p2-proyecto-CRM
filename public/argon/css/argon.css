@@ -5698,7 +5698,7 @@ input[type='button'].btn-block
     display: flex;
     flex-direction: column;
 
-    min-width: 0;
+    min-width: 70 px;
 
     word-wrap: break-word;
 
@@ -5726,7 +5726,7 @@ input[type='button'].btn-block
 .card-body
 {
     padding: 1.5rem; 
-
+    max-width: 50 px;
     flex: 1 1 auto;
 }
 
@@ -5872,6 +5872,7 @@ input[type='button'].btn-block
 }
 .card-group > .card
 {
+    max-width: 385px;
     margin-bottom: 15px;
 }
 @media (min-width: 576px)
@@ -5888,9 +5889,9 @@ input[type='button'].btn-block
     }
     .card-group > .card + .card
     {
-        margin-left: 0;
+        margin-left: 2;
 
-        border-left: 0;
+        border-left: 2;
     }
     .card-group > .card:first-child
     {
@@ -5953,6 +5954,7 @@ input[type='button'].btn-block
 
 .card-columns .card
 {
+
     margin-bottom: 1.25rem;
 }
 
