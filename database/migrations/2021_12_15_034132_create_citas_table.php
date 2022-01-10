@@ -20,7 +20,7 @@ class CreateCitasTable extends Migration
             $table->date('fecha')->nullable();
             $table->time('horaInicio')->nullable(); 
             $table->time('horaFin')->nullable(); 
-            $table->string('url');
+          
             $table->unsignedBigInteger('idCliente');
             $table->unsignedBigInteger('idUsuario');
             $table->timestamps();

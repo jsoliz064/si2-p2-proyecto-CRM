@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CitaController extends Controller
 {
@@ -15,8 +16,9 @@ class CitaController extends Controller
     public function index()
     {
         $citas=Cita::paginate(3);
-        
-        return view('citas.index',compact('citas'));
+        $users= DB::table('users')->get();
+        $clientes= DB::table('clientes')->get();
+        return view('citas.index',compact('citas'),['clientes'=> $clientes,'users' => $users]);
     }
 
     /**
@@ -26,11 +28,13 @@ class CitaController extends Controller
      */
     public function create()
     {
-        Cita::create([
-            'asunto'=>"REUNION",
-            'url'=>"argon/img/theme/Sin-perfil.jpg",
-        ]);
-        return redirect()->route('citas.index');
+
+        /* $clientes = DB::table('clientes')->get();
+        $users = DB::table('users')->get();
+        return view('citas.index',['clientes'=> $clientes,'users' => $users]);
+ */
+       
+       
     }
 
     /**
@@ -40,8 +44,35 @@ class CitaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {  
+        
+        date_default_timezone_set("America/La_Paz");
+        $request->validate([
+            'asunto' => 'required', 
+            'descripcion' => 'required',   
+            'fecha' => 'required',
+            'horaInicio' => 'required',
+            'horaFin' => 'required',
+            'idCliente' => 'required',
+            
+         ]);
+            
+       
+           
+            Cita::create([
+                'asunto' => $request ->asunto,
+                'descripcion' => $request ->descripcion,   
+                'fecha' => $request ->fecha,
+                'horaInicio' => $request ->horaInicio,
+                'horaFin' => $request ->horaFin,
+                'idCliente' => $request ->idCliente,
+                'idUsuario' => auth()->user()->id,
+            ]);
+            
+           
+            return redirect()->route('citas.index');
         //
+      
     }
 
     /**
@@ -64,6 +95,9 @@ class CitaController extends Controller
     public function edit(Cita $cita)
     {
         //
+        $clientes= DB::table('clientes')->get();
+        $users= DB::table('users')->get();
+        return view('cita.edit',compact('cita'),['clientes'=>$clientes],['users'=>$users]);
     }
 
     /**
@@ -87,5 +121,8 @@ class CitaController extends Controller
     public function destroy(Cita $cita)
     {
         //
+        $cita->delete();
+            
+        return redirect()->route('citas.index');
     }
 }

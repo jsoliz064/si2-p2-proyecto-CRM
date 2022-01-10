@@ -12,4 +12,9 @@ class Cliente extends Model
     /* use UsesTenantConnection; */
     protected $table="clientes";
     protected $guarded=['id','created_at','updated_at'];
+
+    public function citas(){
+
+        return $this->hasMany(citas::class,'idCliente','id');
+    }
 }

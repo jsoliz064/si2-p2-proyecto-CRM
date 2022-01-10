@@ -12,17 +12,21 @@
                           <h3 class="mb-0"><b>CITAS PENDIENTES</b></h3>
                         </div>
                         <div align="right" class="col-md-4">
-                            <a href="{{route('citas.create')}}" class="btn btn-primary">Registrar Cita</a>
+                            <button class="btn btn-primary btn-lg" data-toggle="modal"
+                            data-target="#addModal" 
+                            type="button"  name="button"> 
+                           Crear Cita
+                            </button>
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="table-responsive">
                     @if ($citas)
                         <div class="card-group">
                             @foreach ($citas as $cita)
                             <div class="card mx-2">
-                                <img class="card-img-top" src="{{$cita->url}}" alt="Card image cap" width="20%" height="40%">
+                                <img class="card-img-top" src="" alt="Card image cap" width="20%" height="40%">
                                 <div class="card-body">
                                 <h5 class="card-title">{{$cita->asunto}}</h5>
                                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -55,6 +59,75 @@
     </div>
         
 </div>
+
+<!--Agregue el formulario-->
+<div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Crear Cita</h4>
+        </div>
+        <div class="modal-body">
+          <form  action="{{route('citas.store')}}" method="POST" enctype="multipart/form-data">
+              {{ csrf_field() }}
+              <div class="form-group">
+                
+              </div>
+              <div class="form-group">
+                <label> Asunto: </label>
+                <input type="text" class="form-control" name="asunto">
+              </div>
+             
+              <div class="form-group">
+                  <label> Descripción: </label>
+                  <input type="text" class="form-control" name="descripcion">
+                </div>
+
+                <div class="form-group">
+                    <label>Fecha: </label>
+                    <input type="date" class="form-control" name="fecha">
+                  </div>
+
+                  <div class="form-group">
+                    <label> Hora Inicio: </label>
+                    <input type="time" class="form-control" name="horaInicio">
+                  </div>
+                 
+                  <div class="form-group">
+                    <label> Hora Fin: </label>
+                    <input type="time" class="form-control" name="horaFin">
+                  </div>
+                
+
+                <h5>Cliente:</h5>
+            <select name = "idCliente" id="idCliente" class="form-control" onchange="habilitar()" >
+                <option value="">Seleccione el cliente</option>
+                    @foreach ($clientes as $cliente)
+                        <option value="{{$cliente->id}}">
+                            {{$cliente->nombre}}
+                        </option>
+                    @endforeach
+            </select>
+
+         {{--    <h5>Empleado:</h5>
+            <select name = "idUser" id="idUser" class="form-control" onchange="habilitar()" >
+                <option value="">Seleccione el empleado</option>
+                    @foreach ($users as $user)
+                        <option value="{{$user->id}}">
+                            {{$user->name}}
+                        </option>
+                    @endforeach
+            </select> --}}
+
+                  <input type="submit" name="submit" value="Guardar" class="btn btn-success">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          </form>
+        
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
 @endsection
 
 @push('js')
