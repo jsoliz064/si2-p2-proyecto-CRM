@@ -153,7 +153,7 @@ class CitaController extends Controller
 
     public function getCitasAll(){
         $listaCitas = new Collection();
-        $citas = Citas::all();
+        $citas = Cita::all();
         foreach ($citas as $cita) {
             $listaCitas->add($cita);
         }
