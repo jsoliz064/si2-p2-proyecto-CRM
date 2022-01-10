@@ -88,13 +88,7 @@ body{
     background-color: var(--body-color);
     color: var(--text-color);
 }
-.container{
-    margin: 0 0 0 0;
-    font-family: var(--body-font);
-    font-size: var(--normal-font-size);
-    background-color: var(--container-color);
-    color: var(--text-color);
-}
+
 
 .home_social{
     display: grid;

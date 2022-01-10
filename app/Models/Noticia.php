@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pedido extends Model
+class Noticia extends Model
 {
     use HasFactory;
-    protected $table='pedidos';
-    protected $guarded = ['id','created_at','updated_at'];
+    protected $table="noticias";
+    protected $guarded=['id','created_at','updated_at'];
+
+    
 }

@@ -109,7 +109,12 @@
                     </a>
                 </li>
                 
-                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('noticias.index') }}">
+                        <i class="fas fa-folder-plus text-blue"></i> {{ __('Noticias') }}
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('clientes.index')}}">
                         <i class="fas fa-address-book text-blue"></i> {{ __('Registrar Cliente') }}
@@ -120,6 +125,18 @@
                         <i class="fas fa-store text-blue"></i> {{ __('Registrar Producto') }}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('pedidos.index')}}">
+                        <i class="fas fa-cart-plus text-blue"></i> {{ __('Registrar Pedido') }}
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="">
+                        <i class="fas fa-receipt text-blue"></i> {{ __('Registrar Factura') }}
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('documentos.index')}}">
                         <i class="fas fa-folder-plus text-blue"></i> {{ __('Registrar Documentos') }}
@@ -137,7 +154,7 @@
                         <i class="fas fa-folder-plus text-blue"></i> {{ __('Registrar Documentos') }}
                     </a> --}}
                     <a class="nav-link" id="theme-button"> 
-                        <i class="fas fa-palette"></i> {{ __('Modo oscuro ') }}
+                        <i class="fas fa-palette text-blue"></i> {{ __('Modo oscuro ') }}
                     </a>
                 </li>
             </ul>

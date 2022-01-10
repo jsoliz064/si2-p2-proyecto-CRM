@@ -12,7 +12,8 @@ use App\Http\Controllers\BitacoraController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CitaController;
-
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\NoticiaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,7 +68,8 @@ Route::get('reportes-hoy',[ReporteController::class,'reporte_hoy'])->name('repor
 Route::post('reportes-fecha',[ReporteController::class,'reporte_fecha'])->name('reporte.fecha');
 
 Route::resource('citas',CitaController::class);
-
+Route::resource('pedidos',PedidoController::class);
+Route::resource('noticias',NoticiaController::class);
 /* //$user=User::find(2)->db;
 Route::prefix('jsoliz')->group(function(){
 	Route::get('/',function(){
