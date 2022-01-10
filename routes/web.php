@@ -13,7 +13,7 @@ use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\PedidoController;
-
+use App\Http\Controllers\NoticiaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +69,7 @@ Route::post('reportes-fecha',[ReporteController::class,'reporte_fecha'])->name('
 
 Route::resource('citas',CitaController::class);
 Route::resource('pedidos',PedidoController::class);
+Route::resource('noticias',NoticiaController::class);
 /* //$user=User::find(2)->db;
 Route::prefix('jsoliz')->group(function(){
 	Route::get('/',function(){
